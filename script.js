@@ -1,375 +1,255 @@
-/*
  * Ashwini Dental Clinic Website - script.js
  * Author: AI Assistant
- * Version: 1.0
+ * Version: 1.0 (Complete Rebuild - Premium Look Finalized)
  * Date: August 16, 2025
  *
- * This file contains all the JavaScript functionality for the Ashwini Dental Clinic website,
- * including preloader management, dynamic navigation, mobile menu toggling,
- * testimonial carousel, FAQ accordion, scroll animations, form validation, and back-to-top button.
+ * This script provides all the necessary interactivity for the Ashwini Dental Clinic website,
+ * including navigation enhancements, content carousels, accordion functionality,
+ * scroll animations, and a preloader.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize all core functionalities after the DOM is fully loaded.
-    initializePreloader();
-    setupNavbarScrollEffect();
-    setupMobileMenu();
-    setupTestimonialCarousel();
-    setupAccordion();
-    setupScrollAnimations();
-    setupContactFormValidation();
-    setupBackToTopButton();
-    updateCopyrightYear(); // Call the function to update the copyright year
-});
-
-/**
- * Hides the preloader once the page content is loaded.
- * Uses a short delay to ensure all assets are ready and provide a smooth transition.
- */
-function initializePreloader() {
+    // 1. Preloader Hide
     const preloader = document.getElementById('preloader');
     if (preloader) {
-        // Wait for window to fully load all assets (images, etc.) before hiding.
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                preloader.style.opacity = '0'; // Start fading out
-                // After fade, hide it completely to prevent blocking interactions
-                preloader.addEventListener('transitionend', () => {
-                    preloader.style.display = 'none';
-                }, { once: true }); // Ensure event listener runs only once
-            }, 500); // 500ms delay to ensure smooth transition
-        });
-    } else {
-        console.warn('Preloader element with ID "preloader" not found.');
-    }
-}
-
-
-/**
- * Adds a scroll effect to the navigation bar, making it shrink and add a shadow
- * when the user scrolls down the page.
- */
-function setupNavbarScrollEffect() {
-    const navbar = document.getElementById('navbar');
-    if (!navbar) {
-        console.warn('Navbar element with ID "navbar" not found.');
-        return;
+        // Ensure preloader is visible initially, then fade out
+        preloader.style.opacity = '1';
+        setTimeout(() => {
+            preloader.style.opacity = '0';
+            preloader.addEventListener('transitionend', () => preloader.style.display = 'none', { once: true });
+        }, 500); // Wait for 0.5s before fading out
     }
 
-    let lastScrollY = window.scrollY;
+    // 2. Navbar Sticky & Active Link Logic
+    const navbar = document.querySelector('.navbar');
+    const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+    const sections = document.querySelectorAll('section');
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) { // Add scrolled class after 50px scroll
+    const updateNavbar = () => {
+        if (window.scrollY > 50) { // Adjust scroll threshold as needed
             navbar.classList.add('navbar-scrolled');
         } else {
             navbar.classList.remove('navbar-scrolled');
         }
 
-        // Optional: Hide/Show navbar on scroll down/up (for mobile or complex designs)
-        // if (window.scrollY > lastScrollY && window.scrollY > 200) {
-        //     // Scrolling down
-        //     navbar.style.transform = 'translateY(-100%)';
-        // } else {
-        //     // Scrolling up
-        //     navbar.style.transform = 'translateY(0)';
-        // }
-        lastScrollY = window.scrollY;
-    });
-}
+        // Update active nav link based on scroll position
+        let currentActive = 'hero'; // Default to hero if at top
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - navbar.offsetHeight - 30; // Offset for sticky header
+            const sectionBottom = sectionTop + section.offsetHeight;
+            if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+                currentActive = section.id;
+            }
+        });
 
-/**
- * Sets up the mobile navigation menu toggle functionality.
- * Handles opening and closing the mobile menu and its overlay.
- */
-function setupMobileMenu() {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const closeMenuButton = document.getElementById('close-menu-button');
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(currentActive)) {
+                link.classList.add('active');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', updateNavbar);
+    updateNavbar(); // Initial call to set state on load
+
+    // 3. Mobile Menu Toggle
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
+    const closeMenuBtn = document.getElementById('close-menu-btn');
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
-    if (!mobileMenuButton || !closeMenuButton || !mobileMenu || !mobileMenuOverlay) {
-        console.warn('One or more mobile menu elements not found. Mobile menu functionality will be limited.');
-        return;
-    }
-
-    // Function to open the mobile menu
-    const openMenu = () => {
-        mobileMenu.classList.add('active');
-        mobileMenuOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling body when menu is open
+    const toggleMobileMenu = () => {
+        mobileMenu.classList.toggle('active');
+        mobileMenuOverlay.classList.toggle('active');
+        document.body.classList.toggle('overflow-hidden'); // Prevent scrolling body when menu is open
     };
 
-    // Function to close the mobile menu
-    const closeMenu = () => {
-        mobileMenu.classList.remove('active');
-        mobileMenuOverlay.classList.remove('active');
-        document.body.style.overflow = ''; // Restore body scrolling
-    };
+    mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+    closeMenuBtn.addEventListener('click', toggleMobileMenu);
+    mobileMenuOverlay.addEventListener('click', toggleMobileMenu); // Close when clicking outside
 
-    mobileMenuButton.addEventListener('click', openMenu);
-    closeMenuButton.addEventListener('click', closeMenu);
-    mobileMenuOverlay.addEventListener('click', closeMenu); // Close when clicking outside menu
-
-    // Close mobile menu when a navigation link is clicked
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            // Give a slight delay to allow smooth scroll before closing menu
-            setTimeout(closeMenu, 300);
+    // Close mobile menu when a link is clicked
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            if (mobileMenu.classList.contains('active')) {
+                // Check if it's a mobile nav link, not a desktop one that's hidden
+                if (link.classList.contains('mobile-nav-link')) {
+                    toggleMobileMenu();
+                }
+            }
         });
     });
-}
 
-/**
- * Initializes the testimonial carousel, allowing users to navigate through testimonials.
- */
-function setupTestimonialCarousel() {
-    const testimonialTrack = document.querySelector('.testimonial-track');
-    const testimonialSlides = document.querySelectorAll('.testimonial-slide');
-    const prevButton = document.getElementById('testimonial-prev');
-    const nextButton = document.getElementById('testimonial-next');
-
-    if (!testimonialTrack || testimonialSlides.length === 0 || !prevButton || !nextButton) {
-        console.warn('Testimonial carousel elements not found. Carousel functionality disabled.');
-        return;
-    }
-
-    let currentIndex = 0;
-    const slidesPerView = window.innerWidth >= 1024 ? 3 : (window.innerWidth >= 768 ? 2 : 1);
-    const totalSlides = testimonialSlides.length;
-
-    const updateCarousel = () => {
-        const slideWidth = testimonialSlides[0].offsetWidth; // Get current width of a single slide
-        let offset = -currentIndex * slideWidth; // Calculate the offset based on current index and slide width
-
-        // Adjust offset if trying to go beyond bounds (looping effect for end/start)
-        if (currentIndex >= totalSlides - (slidesPerView -1)) {
-            offset = -(totalSlides - slidesPerView) * slideWidth;
-            currentIndex = totalSlides - slidesPerView;
-        }
-        if (currentIndex < 0) {
-            offset = 0;
-            currentIndex = 0;
-        }
-
-        testimonialTrack.style.transform = `translateX(${offset}px)`;
-
-        // Update button visibility (optional: could loop testimonials)
-        prevButton.style.display = currentIndex === 0 ? 'none' : 'block';
-        nextButton.style.display = currentIndex >= totalSlides - slidesPerView ? 'none' : 'block';
-    };
-
-    prevButton.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex--;
-        } else {
-            // Optional: Loop to end
-            // currentIndex = totalSlides - slidesPerView;
-        }
-        updateCarousel();
+    // 4. Smooth Scrolling for Anchor Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            document.querySelector(targetId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
     });
 
-    nextButton.addEventListener('click', () => {
-        if (currentIndex < totalSlides - slidesPerView) {
-            currentIndex++;
-        } else {
-            // Optional: Loop to start
-            // currentIndex = 0;
-        }
-        updateCarousel();
-    });
+    // 5. Carousel Functionality (Testimonials and Doctors)
+    const setupCarousel = (trackId, prevBtnId, nextBtnId, slideWidthFactor = 1) => {
+        const track = document.getElementById(trackId);
+        const prevBtn = document.getElementById(prevBtnId);
+        const nextBtn = document.getElementById(nextBtnId);
+        if (!track || !prevBtn || !nextBtn) return; // Exit if elements not found
 
-    // Recalculate layout on window resize
-    window.addEventListener('resize', () => {
-        // Re-determine slidesPerView on resize as well
-        const newSlidesPerView = window.innerWidth >= 1024 ? 3 : (window.innerWidth >= 768 ? 2 : 1);
-        if (slidesPerView !== newSlidesPerView) {
-            slidesPerView = newSlidesPerView; // Update the variable for slidesPerView
-            currentIndex = 0; // Reset index on layout change to avoid weird jumps
-        }
-        updateCarousel();
-    });
+        let currentSlide = 0;
+        const slides = track.children; // Get all slide elements
+        const totalSlides = slides.length;
 
-    // Initial update to set correct state
-    updateCarousel();
-}
+        // Function to update carousel position
+        const updateCarousel = () => {
+            let offset = slides[currentSlide].offsetLeft;
+            track.style.transform = `translateX(-${offset}px)`;
 
-/**
- * Sets up the accordion functionality for the FAQ section.
- * Toggles the visibility of accordion content when headers are clicked.
- */
-function setupAccordion() {
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
-
-    accordionHeaders.forEach(header => {
-        header.addEventListener('click', () => {
-            const content = header.nextElementSibling; // Get the content div immediately after the header
-
-            if (!content || !content.classList.contains('accordion-content')) {
-                console.warn('Accordion content not found for header:', header);
-                return;
+            // Adjust for partial slide visibility based on window width
+            let visibleSlides = 1;
+            if (window.innerWidth >= 768) { // md breakpoint
+                visibleSlides = 2;
+            }
+            if (window.innerWidth >= 1024) { // lg breakpoint
+                visibleSlides = 3;
             }
 
-            // Close all other open accordions
+            // Hide/show controls based on current slide
+            prevBtn.style.display = currentSlide === 0 ? 'none' : 'block';
+            nextBtn.style.display = currentSlide >= (totalSlides - visibleSlides) ? 'none' : 'block';
+        };
+
+        prevBtn.addEventListener('click', () => {
+            currentSlide = Math.max(0, currentSlide - 1);
+            updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            let visibleSlides = 1;
+            if (window.innerWidth >= 768) {
+                visibleSlides = 2;
+            }
+            if (window.innerWidth >= 1024) {
+                visibleSlides = 3;
+            }
+            currentSlide = Math.min(totalSlides - visibleSlides, currentSlide + 1);
+            updateCarousel();
+        });
+
+        // Update carousel on window resize to adjust visible slides and offsets
+        window.addEventListener('resize', updateCarousel);
+
+        updateCarousel(); // Initial positioning
+    };
+
+    setupCarousel('testimonialTrack', 'prevTestimonial', 'nextTestimonial');
+    setupCarousel('doctorTrack', 'prevDoctor', 'nextDoctor');
+
+
+    // 6. Accordion Functionality (FAQ Section)
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            const content = document.getElementById(`accordion-content-${header.dataset.accordion}`);
+            // Close other open accordions
             accordionHeaders.forEach(otherHeader => {
                 if (otherHeader !== header && otherHeader.classList.contains('active')) {
                     otherHeader.classList.remove('active');
-                    otherHeader.nextElementSibling.classList.remove('active');
+                    document.getElementById(`accordion-content-${otherHeader.dataset.accordion}`).classList.remove('active');
                 }
             });
 
-            // Toggle the clicked accordion
+            // Toggle current accordion
             header.classList.toggle('active');
             content.classList.toggle('active');
         });
     });
-}
 
-/**
- * Implements scroll-triggered animations for elements with the 'fade-in-up' class.
- * Elements become visible as they enter the viewport.
- */
-function setupScrollAnimations() {
+    // 7. Form Validation and Submission (Contact Form)
+    const contactForm = document.getElementById('contact-form');
+    const formSuccessMessage = document.getElementById('form-success-message');
+
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        let isValid = true;
+
+        // Simple validation for Name
+        const nameInput = document.getElementById('name');
+        const nameError = document.getElementById('name-error');
+        if (nameInput.value.trim() === '') {
+            nameError.style.display = 'block';
+            isValid = false;
+        } else {
+            nameError.style.display = 'none';
+        }
+
+        // Simple validation for Email
+        const emailInput = document.getElementById('email');
+        const emailError = document.getElementById('email-error');
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(emailInput.value.trim())) {
+            emailError.style.display = 'block';
+            isValid = false;
+        } else {
+            emailError.style.display = 'none';
+        }
+
+        // Simple validation for Message (optional, but good practice)
+        const messageInput = document.getElementById('message');
+        const messageError = document.getElementById('message-error');
+        if (messageInput.value.trim() === '') {
+             messageError.style.display = 'block';
+             isValid = false;
+        } else {
+            messageError.style.display = 'none';
+        }
+
+
+        if (isValid) {
+            // In a real application, you would send this data to a server
+            console.log('Form Submitted!', {
+                name: nameInput.value.trim(),
+                email: emailInput.value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                message: messageInput.value.trim()
+            });
+
+            // Show success message
+            formSuccessMessage.style.display = 'block';
+            contactForm.reset(); // Clear the form
+            // Hide success message after a few seconds
+            setTimeout(() => {
+                formSuccessMessage.style.display = 'none';
+            }, 5000);
+        }
+    });
+
+    // 8. Fade-in-up animations on scroll (Intersection Observer)
     const faders = document.querySelectorAll('.fade-in-up');
-
     const appearOptions = {
-        threshold: 0.2, // Trigger when 20% of the item is visible
-        rootMargin: "0px 0px -50px 0px" // Start animation 50px before entering viewport
+        threshold: 0.15, // Trigger when 15% of the element is in view
+        rootMargin: "0px 0px -50px 0px" // Shrink viewport by 50px from bottom
     };
 
-    const appearOnScroll = new IntersectionObserver((entries, appearObserver) => {
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (!entry.isIntersecting) {
                 return;
-            } else {
-                entry.target.classList.add('visible');
-                appearObserver.unobserve(entry.target); // Stop observing once visible
             }
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // Stop observing once visible
         });
     }, appearOptions);
 
     faders.forEach(fader => {
         appearOnScroll.observe(fader);
     });
-}
 
-/**
- * Handles form validation for the contact form.
- * Prevents submission if fields are invalid and shows error messages.
- */
-function setupContactFormValidation() {
-    const contactForm = document.getElementById('contact-form');
-    const successMessage = document.getElementById('form-success-message');
-    const errorMessage = document.getElementById('form-error-message');
-
-    if (!contactForm || !successMessage || !errorMessage) {
-        console.warn('Contact form or messages not found. Form validation disabled.');
-        return;
-    }
-
-    // Function to show error message for a specific input
-    const showError = (inputElement, errorElementId, message) => {
-        const errorDiv = document.getElementById(errorElementId);
-        if (errorDiv) {
-            errorDiv.textContent = message;
-            errorDiv.classList.remove('hidden');
-            inputElement.classList.add('border-red-500'); // Add red border to input
-        }
-    };
-
-    // Function to hide error message for a specific input
-    const hideError = (inputElement, errorElementId) => {
-        const errorDiv = document.getElementById(errorElementId);
-        if (errorDiv) {
-            errorDiv.classList.add('hidden');
-            inputElement.classList.remove('border-red-500'); // Remove red border
-        }
-    };
-
-    // Generic validation function
-    const validateInput = (input, errorId) => {
-        let isValid = true;
-        if (input.hasAttribute('required') && input.value.trim() === '') {
-            showError(input, errorId, `Please enter your ${input.name}.`);
-            isValid = false;
-        } else if (input.type === 'email' && !input.value.includes('@')) {
-            showError(input, errorId, 'Please enter a valid email address.');
-            isValid = false;
-        } else if (input.type === 'tel' && input.value.trim() !== '' && !/^\+?[0-9\s-()]{7,20}$/.test(input.value)) {
-            showError(input, errorId, 'Please enter a valid phone number.');
-            isValid = false;
-        } else {
-            hideError(input, errorId);
-        }
-        return isValid;
-    };
-
-    // Event listeners for real-time validation feedback
-    contactForm.querySelectorAll('.form-input, .form-textarea').forEach(input => {
-        const errorId = input.id + '-error'; // Assuming error div ID is input ID + '-error'
-        input.addEventListener('input', () => validateInput(input, errorId));
-        input.addEventListener('blur', () => validateInput(input, errorId));
-    });
-
-    contactForm.addEventListener('submit', (event) => {
-        event.preventDefault(); // Prevent default form submission
-
-        let formIsValid = true;
-
-        // Validate all required fields
-        const nameInput = document.getElementById('name');
-        const emailInput = document.getElementById('email');
-        const phoneInput = document.getElementById('phone');
-        const subjectInput = document.getElementById('subject');
-        const messageInput = document.getElementById('message');
-
-        formIsValid = validateInput(nameInput, 'name-error') && formIsValid;
-        formIsValid = validateInput(emailInput, 'email-error') && formIsValid;
-        formIsValid = validateInput(phoneInput, 'phone-error') && formIsValid; // Phone is optional, but still validate if filled
-        formIsValid = validateInput(subjectInput, 'subject-error') && formIsValid;
-        formIsValid = validateInput(messageInput, 'message-error') && formIsValid;
-
-        if (formIsValid) {
-            // Simulate form submission
-            console.log('Form Submitted!', {
-                name: nameInput.value,
-                email: emailInput.value,
-                phone: phoneInput.value,
-                subject: subjectInput.value,
-                message: messageInput.value
-            });
-
-            // Hide form and show success message
-            contactForm.reset(); // Clear the form
-            contactForm.classList.add('hidden');
-            successMessage.classList.remove('hidden');
-            errorMessage.classList.add('hidden'); // Ensure error message is hidden
-
-            // Optionally hide success message after a few seconds
-            setTimeout(() => {
-                successMessage.classList.add('hidden');
-                contactForm.classList.remove('hidden');
-            }, 5000);
-
-        } else {
-            errorMessage.textContent = 'Please correct the errors in the form.';
-            errorMessage.classList.remove('hidden');
-            successMessage.classList.add('hidden'); // Ensure success message is hidden
-        }
-    });
-}
-
-/**
- * Sets up the back-to-top button functionality.
- * Shows/hides the button based on scroll position and smoothly scrolls to top when clicked.
- */
-function setupBackToTopButton() {
+    // 9. Back to Top Button
     const backToTopButton = document.getElementById('back-to-top');
-    if (!backToTopButton) {
-        console.warn('Back-to-top button not found.');
-        return;
-    }
-
     const toggleBackToTop = () => {
         if (window.scrollY > 300) { // Show button after scrolling 300px
             backToTopButton.classList.add('show');
@@ -379,23 +259,13 @@ function setupBackToTopButton() {
     };
 
     window.addEventListener('scroll', toggleBackToTop);
-    window.addEventListener('load', toggleBackToTop); // Check on load too
+    toggleBackToTop(); // Initial check
 
-    backToTopButton.addEventListener('click', (e) => {
-        e.preventDefault();
+    backToTopButton.addEventListener('click', () => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
     });
-}
+});
 
-/**
- * Updates the copyright year in the footer dynamically.
- */
-function updateCopyrightYear() {
-    const yearSpan = document.getElementById('current-year');
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-    }
-}
