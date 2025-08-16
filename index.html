@@ -3,703 +3,491 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashwini Dental Clinic - Dr. Hima Spoorthi</title>
-    <!-- Favicon - Placeholder for a professional clinic icon -->
-    <link rel="icon" href="https://placehold.co/32x32/1a73e8/ffffff?text=AD" type="image/x-icon">
-
-    <!-- Google Fonts: Inter for a modern, clean look -->
+    <title>Ashwini Dental Clinic - Premium Care, Brighter Smiles</title>
+    <!-- Google Fonts: Inter for modern typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome for professional icons -->
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <!-- Tailwind CSS CDN for utility-first styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- IMPORTANT: Link to your external stylesheet -->
+    <!-- Your Custom Stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <!-- Favicon -->
+    <link rel="icon" href="https://placehold.co/32x32/1A73E8/ffffff?text=AD" type="image/x-icon">
 </head>
-<body class="bg-gray-50 text-gray-800">
-
+<body>
     <!-- Preloader -->
     <div id="preloader">
         <div class="spinner"></div>
     </div>
 
-    <!-- Header & Navigation Bar -->
-    <header class="navbar" id="navbar">
-        <div class="container mx-auto px-6 flex justify-between items-center py-2">
-            <!-- Clinic Logo/Name -->
-            <a href="#" class="navbar-brand">
-                <i class="fas fa-tooth text-primary mr-2 text-3xl"></i>
-                <span class="text-primary">Ashwini Dental Clinic</span>
+    <!-- Header & Navigation -->
+    <header class="navbar">
+        <div class="container flex justify-between items-center py-4">
+            <a href="#hero" class="navbar-brand">
+                <i class="fas fa-tooth"></i> Ashwini Dental
             </a>
 
-            <!-- Desktop Navigation Links -->
-            <nav class="hidden md:flex flex-grow justify-end items-center">
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex flex-grow justify-end items-center space-x-8 pr-6">
                 <a href="#hero" class="nav-link active">Home</a>
                 <a href="#about" class="nav-link">About Us</a>
                 <a href="#services" class="nav-link">Services</a>
-                <a href="#doctors" class="nav-link">Doctors</a>
+                <a href="#doctors" class="nav-link">Our Team</a>
                 <a href="#testimonials" class="nav-link">Testimonials</a>
                 <a href="#gallery" class="nav-link">Gallery</a>
                 <a href="#faq" class="nav-link">FAQ</a>
-                <a href="#contact" class="nav-link">Contact Us</a>
-                <button class="btn-primary ml-6">Book Appointment</button>
+                <a href="#contact" class="nav-link btn-primary">Book an Appointment</a>
             </nav>
 
-            <!-- Mobile Menu Toggle Button -->
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-gray-700 hover:text-primary focus:outline-none">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-toggle" class="md:hidden text-gray-700 text-3xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
-    <!-- Mobile Navigation Menu (hidden by default) -->
+    <!-- Mobile Menu Sidebar -->
     <div id="mobile-menu" class="mobile-menu">
-        <div class="flex justify-between items-center p-6 border-b border-gray-200">
-            <span class="navbar-brand text-lg">Menu</span>
-            <button id="close-menu-button" class="close-menu-btn">
-                <i class="fas fa-times text-2xl"></i>
+        <div class="flex justify-end p-6">
+            <button id="close-menu-btn" class="text-gray-700 text-3xl focus:outline-none close-menu-btn">
+                <i class="fas fa-times"></i>
             </button>
         </div>
-        <nav class="flex flex-col p-6 space-y-4">
-            <a href="#hero" class="nav-link mobile-nav-link">Home</a>
-            <a href="#about" class="nav-link mobile-nav-link">About Us</a>
-            <a href="#services" class="nav-link mobile-nav-link">Services</a>
-            <a href="#doctors" class="nav-link mobile-nav-link">Doctors</a>
-            <a href="#testimonials" class="nav-link mobile-nav-link">Testimonials</a>
-            <a href="#gallery" class="nav-link mobile-nav-link">Gallery</a>
-            <a href="#faq" class="nav-link mobile-nav-link">FAQ</a>
-            <a href="#contact" class="nav-link mobile-nav-link">Contact Us</a>
-            <button class="btn-primary mt-4 w-full">Book Appointment</button>
+        <nav class="flex flex-col flex-grow p-6 space-y-2">
+            <a href="#hero" class="mobile-nav-link active">Home</a>
+            <a href="#about" class="mobile-nav-link">About Us</a>
+            <a href="#services" class="mobile-nav-link">Services</a>
+            <a href="#doctors" class="mobile-nav-link">Our Team</a>
+            <a href="#testimonials" class="mobile-nav-link">Testimonials</a>
+            <a href="#gallery" class="mobile-nav-link">Gallery</a>
+            <a href="#faq" class="mobile-nav-link">FAQ</a>
+            <a href="#contact" class="mobile-nav-link btn-primary">Book an Appointment</a>
         </nav>
     </div>
     <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
 
-    <!-- Hero Section -->
-    <section id="hero" class="relative text-center">
-        <div class="container mx-auto px-6 py-24 z-10 fade-in-up">
-            <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight mb-6">
-                Your Smile, Our Passion
-            </h1>
-            <p class="text-xl lg:text-2xl font-light mb-10 max-w-3xl mx-auto">
-                Comprehensive Dental Care for a Brighter, Healthier You.
-                At Ashwini Dental Clinic, we combine expertise with a caring touch.
-            </p>
-            <div class="space-x-4">
-                <a href="#contact" class="btn-primary text-lg">Book an Appointment</a>
-                <a href="#services" class="btn-secondary text-lg">Explore Our Services</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Us Section -->
-    <section id="about" class="bg-white fade-in-up">
-        <div class="container mx-auto px-6">
-            <h2 class="section-heading">About Ashwini Dental Clinic</h2>
-            <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
-                <div class="lg:w-1/2">
-                    <img src="https://placehold.co/600x400/1a73e8/ffffff?text=Modern+Clinic+Interior" alt="Ashwini Dental Clinic Interior" class="rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out">
-                </div>
-                <div class="lg:w-1/2 text-lg text-gray-700 leading-relaxed">
-                    <p class="mb-6">
-                        Ashwini Dental Clinic, led by the esteemed <span class="font-semibold text-primary">Dr. Hima Spoorthi</span>, is dedicated to providing
-                        exceptional dental care in a comfortable and compassionate environment. We believe in a patient-centric approach,
-                        focusing on individualized treatment plans that meet your unique oral health needs and aesthetic goals.
-                    </p>
-                    <p class="mb-6">
-                        Our clinic is equipped with state-of-the-art technology, ensuring precise diagnostics and effective treatments.
-                        From routine check-ups and cleanings to advanced cosmetic dentistry and restorative procedures,
-                        Dr. Spoorthi and her team are committed to delivering outstanding results that enhance your smile and overall well-being.
-                    </p>
-                    <p>
-                        We prioritize patient education, ensuring you are fully informed about your oral health and treatment options.
-                        Experience the difference of personalized care at Ashwini Dental Clinic.
-                        We look forward to welcoming you and helping you achieve a healthy, beautiful smile.
-                    </p>
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="relative text-center flex items-center justify-center min-h-screen text-white overflow-hidden">
+            <div class="container z-20">
+                <h1 class="text-7xl md:text-8xl lg:text-9xl font-extrabold leading-tight mb-8">
+                    Your Smile, Our Priority.
+                </h1>
+                <p class="text-xl md:text-2xl font-light max-w-4xl mx-auto mb-10 opacity-90">
+                    Experience state-of-the-art dental care with a compassionate touch.
+                    We are dedicated to your oral health and beaming confidence.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="#contact" class="btn-primary">Book Appointment</a>
+                    <a href="#services" class="btn-secondary">Explore Services</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Services Section -->
-    <section id="services" class="bg-bg-light fade-in-up">
-        <div class="container mx-auto px-6">
-            <h2 class="section-heading">Our Comprehensive Dental Services</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- Service Card 1: General Dentistry -->
-                <div class="card card-inner-padding text-center">
-                    <div class="text-primary text-6xl mb-4"><i class="fas fa-stethoscope"></i></div>
-                    <h3 class="text-2xl font-bold mb-3 text-gray-900">General Dentistry</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        Regular check-ups, cleanings, fillings, and preventive care to maintain optimal oral health for your entire family.
-                        We focus on early detection and intervention.
-                    </p>
-                    <a href="#" class="text-primary hover:underline mt-4 inline-block font-semibold">Learn More <i class="fas fa-arrow-right text-sm ml-1"></i></a>
+        <!-- About Us Section -->
+        <section id="about" class="py-24 md:py-32 bg-gradient-light-grey relative overflow-hidden">
+            <div class="container grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in-up">
+                    <img src="https://placehold.co/800x600/1A73E8/ffffff?text=Ashwini+Dental+Clinic" alt="Ashwini Dental Clinic" class="w-full h-auto rounded-3xl shadow-2xl-custom border-6 border-primary-light">
                 </div>
-
-                <!-- Service Card 2: Cosmetic Dentistry -->
-                <div class="card card-inner-padding text-center">
-                    <div class="text-primary text-6xl mb-4"><i class="fas fa-brush"></i></div>
-                    <h3 class="text-2xl font-bold mb-3 text-gray-900">Cosmetic Dentistry</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        Enhance your smile with teeth whitening, veneers, bonding, and smile makeovers designed to boost your confidence.
-                        Achieve the smile you've always dreamed of.
+                <div class="fade-in-up delay-200">
+                    <h2 class="section-heading text-left">About Ashwini Dental Clinic</h2>
+                    <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                        At Ashwini Dental Clinic, we believe in providing **exceptional dental care** in a warm, friendly, and comfortable environment. Our team of highly skilled and experienced dental professionals is dedicated to ensuring every patient receives personalized treatment tailored to their unique needs.
                     </p>
-                    <a href="#" class="text-primary hover:underline mt-4 inline-block font-semibold">Learn More <i class="fas fa-arrow-right text-sm ml-1"></i></a>
-                </div>
-
-                <!-- Service Card 3: Orthodontics -->
-                <div class="card card-inner-padding text-center">
-                    <div class="text-primary text-6xl mb-4"><i class="fas fa-braces"></i></div>
-                    <h3 class="text-2xl font-bold mb-3 text-gray-900">Orthodontics</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        Straighten your teeth and correct bite issues with traditional braces or clear aligners for a perfectly aligned smile.
-                        Modern solutions for all ages.
+                    <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                        With **state-of-the-art technology** and a commitment to continuous learning, we offer a full range of dental services, from routine check-ups and cleanings to advanced cosmetic and restorative procedures. Your comfort and satisfaction are at the heart of everything we do.
                     </p>
-                    <a href="#" class="text-primary hover:underline mt-4 inline-block font-semibold">Learn More <i class="fas fa-arrow-right text-sm ml-1"></i></a>
-                </div>
-
-                <!-- Service Card 4: Dental Implants -->
-                <div class="card card-inner-padding text-center">
-                    <div class="text-primary text-6xl mb-4"><i class="fas fa-crown"></i></div>
-                    <h3 class="text-2xl font-bold mb-3 text-gray-900">Dental Implants</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        Replace missing teeth with durable, natural-looking dental implants that restore function and aesthetics.
-                        A permanent solution for tooth loss.
-                    </p>
-                    <a href="#" class="text-primary hover:underline mt-4 inline-block font-semibold">Learn More <i class="fas fa-arrow-right text-sm ml-1"></i></a>
-                </div>
-
-                <!-- Service Card 5: Root Canal Treatment -->
-                <div class="card card-inner-padding text-center">
-                    <div class="text-primary text-6xl mb-4"><i class="fas fa-syringe"></i></div>
-                    <h3 class="text-2xl font-bold mb-3 text-gray-900">Root Canal Treatment</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        Save infected or damaged teeth with effective root canal therapy, performed with precision and care.
-                        Relieve pain and preserve your natural tooth.
-                    </p>
-                    <a href="#" class="text-primary hover:underline mt-4 inline-block font-semibold">Learn More <i class="fas fa-arrow-right text-sm ml-1"></i></a>
-                </div>
-
-                <!-- Service Card 6: Pediatric Dentistry -->
-                <div class="card card-inner-padding text-center">
-                    <div class="text-primary text-6xl mb-4"><i class="fas fa-child"></i></div>
-                    <h3 class="text-2xl font-bold mb-3 text-gray-900">Pediatric Dentistry</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        Gentle and comprehensive dental care for children of all ages, fostering positive dental habits early on.
-                        Creating happy, healthy smiles for kids.
-                    </p>
-                    <a href="#" class="text-primary hover:underline mt-4 inline-block font-semibold">Learn More <i class="fas fa-arrow-right text-sm ml-1"></i></a>
-                </div>
-
-                <!-- Service Card 7: Oral Surgery -->
-                <div class="card card-inner-padding text-center">
-                    <div class="text-primary text-6xl mb-4"><i class="fas fa-scalpel"></i></div>
-                    <h3 class="text-2xl font-bold mb-3 text-gray-900">Oral Surgery</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        Expert oral surgical procedures including wisdom teeth extractions, done with patient comfort in mind.
-                        Safe and effective surgical solutions.
-                    </p>
-                    <a href="#" class="text-primary hover:underline mt-4 inline-block font-semibold">Learn More <i class="fas fa-arrow-right text-sm ml-1"></i></a>
-                </div>
-
-                <!-- Service Card 8: Emergency Dental Care -->
-                <div class="card card-inner-padding text-center">
-                    <div class="text-primary text-6xl mb-4"><i class="fas fa-first-aid"></i></div>
-                    <h3 class="text-2xl font-bold mb-3 text-gray-900">Emergency Dental Care</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        Prompt and compassionate care for dental emergencies, relieving pain and addressing urgent dental issues.
-                        We're here when you need us most.
-                    </p>
-                    <a href="#" class="text-primary hover:underline mt-4 inline-block font-semibold">Learn More <i class="fas fa-arrow-right text-sm ml-1"></i></a>
+                    <a href="#contact" class="btn-primary mt-6">Get to Know Us</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Meet the Doctor Section -->
-    <section id="doctors" class="bg-white fade-in-up">
-        <div class="container mx-auto px-6">
-            <h2 class="section-heading">Meet Our Esteemed Doctor</h2>
-            <div class="flex flex-col lg:flex-row items-center justify-center gap-10">
-                <!-- Dr. Hima Spoorthi Profile Card -->
-                <div class="card p-8 text-center doctor-card lg:w-2/3 max-w-2xl">
-                    <img src="https://placehold.co/150x150/34a853/ffffff?text=Dr.+Hima" alt="Dr. Hima Spoorthi Profile" class="mx-auto rounded-full mb-6 shadow-md border-4 border-primary">
-                    <h3 class="text-3xl font-bold mb-2 text-gray-900">Dr. Hima Spoorthi</h3>
-                    <p class="text-primary text-lg font-semibold mb-4">BDS, MDS (Oral and Maxillofacial Pathology)</p>
-                    <p class="text-gray-700 leading-relaxed mb-6">
-                        Dr. Hima Spoorthi is the heart and soul of Ashwini Dental Clinic. With a strong academic background
-                        including a Bachelor of Dental Surgery (BDS) and a Master of Dental Surgery (MDS) in Oral and Maxillofacial Pathology,
-                        Dr. Spoorthi brings a wealth of knowledge and expertise to her practice.
-                        Her specialized training allows her to accurately diagnose and manage a wide range of oral conditions,
-                        ensuring comprehensive care for all her patients.
-                    </p>
-                    <p class="mb-6">
-                        Known for her gentle demeanor and meticulous attention to detail, Dr. Spoorthi is dedicated to making every patient
-                        feel comfortable and well-cared for. She stays updated with the latest advancements in dental science
-                        through continuous education and professional development, ensuring that Ashwini Dental Clinic
-                        offers the most current and effective treatment options available.
-                    </p>
-                    <p class="mb-6">
-                        Her philosophy revolves around preventive care and patient education, empowering individuals to take an active
-                        role in their oral health journey. Dr. Spoorthi is not just a dentist; she is a compassionate healthcare provider
-                        committed to building lasting relationships with her patients based on trust and mutual respect.
-                    </p>
-                    <div class="social-links mt-6">
-                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin text-3xl"></i></a>
-                        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-square text-3xl"></i></a>
-                        <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter-square text-3xl"></i></a>
+        <!-- Services Section -->
+        <section id="services" class="py-24 md:py-32 bg-white">
+            <div class="container">
+                <h2 class="section-heading">Our Comprehensive Dental Services</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card card-inner-padding fade-in-up">
+                        <i class="fas fa-tooth text-6xl text-primary mb-4"></i>
+                        <h3>General Dentistry</h3>
+                        <p class="text-lg text-gray-700 mb-4">
+                            Routine check-ups, cleanings, fillings, and preventive care to maintain optimal oral health for your entire family.
+                        </p>
+                        <a href="#contact" class="text-primary-dark font-semibold mt-auto flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                    <div class="card card-inner-padding fade-in-up delay-100">
+                        <i class="fas fa-gem text-6xl text-primary mb-4"></i>
+                        <h3>Cosmetic Dentistry</h3>
+                        <p class="text-lg text-gray-700 mb-4">
+                            Enhance your smile with teeth whitening, veneers, bonding, and smile makeovers for a radiant appearance.
+                        </p>
+                        <a href="#contact" class="text-primary-dark font-semibold mt-auto flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                    <div class="card card-inner-padding fade-in-up delay-200">
+                        <i class="fas fa-stethoscope text-6xl text-primary mb-4"></i>
+                        <h3>Oral Surgery</h3>
+                        <p class="text-lg text-gray-700 mb-4">
+                            Expert extractions, wisdom teeth removal, and other surgical procedures performed with precision and care.
+                        </p>
+                        <a href="#contact" class="text-primary-dark font-semibold mt-auto flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                    <div class="card card-inner-padding fade-in-up delay-300">
+                        <i class="fas fa-hand-holding-medical text-6xl text-primary mb-4"></i>
+                        <h3>Dental Implants</h3>
+                        <p class="text-lg text-gray-700 mb-4">
+                            Permanent solutions for missing teeth, restoring function and aesthetics with high-quality dental implants.
+                        </p>
+                        <a href="#contact" class="text-primary-dark font-semibold mt-auto flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                    <div class="card card-inner-padding fade-in-up delay-400">
+                        <i class="fas fa-child text-6xl text-primary mb-4"></i>
+                        <h3>Pediatric Dentistry</h3>
+                        <p class="text-lg text-gray-700 mb-4">
+                            Gentle and comprehensive dental care for children of all ages, fostering positive dental habits early on.
+                        </p>
+                        <a href="#contact" class="text-primary-dark font-semibold mt-auto flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                    <div class="card card-inner-padding fade-in-up delay-500">
+                        <i class="fas fa-align-left text-6xl text-primary mb-4"></i>
+                        <h3>Orthodontics</h3>
+                        <p class="text-lg text-gray-700 mb-4">
+                            Aligning smiles with traditional braces and clear aligners to achieve optimal bite and aesthetics.
+                        </p>
+                        <a href="#contact" class="text-primary-dark font-semibold mt-auto flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2 transition-transform duration-300"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="bg-bg-dark fade-in-up">
-        <div class="container mx-auto px-6">
-            <h2 class="section-heading">What Our Patients Say</h2>
-            <div class="testimonial-carousel relative w-full overflow-hidden px-8">
-                <div class="testimonial-track flex -ml-4 -mr-4">
-                    <!-- Testimonial 1 -->
-                    <div class="testimonial-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
-                        <div class="card card-inner-padding text-center h-full flex flex-col justify-between">
-                            <div>
-                                <i class="fas fa-quote-left text-primary text-4xl mb-4"></i>
-                                <p class="text-gray-700 mb-6 italic">
-                                    "Dr. Hima Spoorthi is truly exceptional. Her gentle approach made my dental visit so comfortable.
-                                    The clinic is clean, modern, and the staff are incredibly friendly. Highly recommend!"
+        <!-- Meet the Doctor Section -->
+        <section id="doctors" class="py-24 md:py-32 bg-gradient-light-blue relative overflow-hidden">
+            <div class="container">
+                <h2 class="section-heading">Meet Our Experienced Doctor</h2>
+                <div class="testimonial-carousel doctor-carousel relative">
+                    <div class="testimonial-track flex" id="doctorTrack">
+                        <!-- Doctor 1 -->
+                        <div class="testimonial-slide w-full flex-shrink-0 p-4">
+                            <div class="doctor-card card-inner-padding text-center fade-in-up">
+                                <img src="https://placehold.co/220x220/34A853/ffffff?text=Dr.+Priya" alt="Dr. Priya Sharma" class="rounded-full mx-auto mb-6 object-cover border-12 border-secondary-color shadow-2xl-custom hover:scale-105 hover:rotate-3 transition-all duration-400">
+                                <h3 class="text-4xl font-bold mb-3">Dr. Priya Sharma</h3>
+                                <p class="text-xl font-semibold text-primary mb-6">DDS, Oral & Maxillofacial Surgeon</p>
+                                <p class="text-lg text-gray-700 leading-relaxed mb-8">
+                                    Dr. Priya Sharma is a highly respected oral and maxillofacial surgeon with over 15 years of experience. She is passionate about providing exceptional surgical care with a gentle touch, ensuring patient comfort and optimal outcomes. Dr. Sharma is committed to staying abreast of the latest advancements in dental surgery and believes in a patient-centric approach to treatment.
                                 </p>
+                                <div class="social-links flex justify-center space-x-6">
+                                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin hover:text-accent transform hover:-translate-y-2 hover:scale-110 transition-all duration-300"></i></a>
+                                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-square hover:text-accent transform hover:-translate-y-2 hover:scale-110 transition-all duration-300"></i></a>
+                                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter-square hover:text-accent transform hover:-translate-y-2 hover:scale-110 transition-all duration-300"></i></a>
+                                </div>
                             </div>
-                            <div class="font-semibold text-gray-900">- Priya Sharma</div>
                         </div>
-                    </div>
-                    <!-- Testimonial 2 -->
-                    <div class="testimonial-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
-                        <div class="card card-inner-padding text-center h-full flex flex-col justify-between">
-                            <div>
-                                <i class="fas fa-quote-left text-primary text-4xl mb-4"></i>
-                                <p class="text-gray-700 mb-6 italic">
-                                    "I had a fantastic experience at Ashwini Dental Clinic. Dr. Spoorthi explained every step of my treatment
-                                    and answered all my questions patiently. My smile has never looked better!"
+                        <!-- Doctor 2 (Example - add more if needed) -->
+                        <div class="testimonial-slide w-full flex-shrink-0 p-4">
+                            <div class="doctor-card card-inner-padding text-center fade-in-up">
+                                <img src="https://placehold.co/220x220/FBBC04/ffffff?text=Dr.+Anil" alt="Dr. Anil Kumar" class="rounded-full mx-auto mb-6 object-cover border-12 border-secondary-color shadow-2xl-custom hover:scale-105 hover:rotate-3 transition-all duration-400">
+                                <h3 class="text-4xl font-bold mb-3">Dr. Anil Kumar</h3>
+                                <p class="text-xl font-semibold text-primary mb-6">DDS, General & Cosmetic Dentist</p>
+                                <p class="text-lg text-gray-700 leading-relaxed mb-8">
+                                    Dr. Anil Kumar is a dedicated general and cosmetic dentist known for his meticulous work and friendly demeanor. With a focus on preventive care and aesthetic dentistry, he helps patients achieve beautiful, healthy smiles. Dr. Kumar is committed to patient education and believes in empowering individuals to make informed decisions about their oral health.
                                 </p>
+                                <div class="social-links flex justify-center space-x-6">
+                                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin hover:text-accent transform hover:-translate-y-2 hover:scale-110 transition-all duration-300"></i></a>
+                                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-square hover:text-accent transform hover:-translate-y-2 hover:scale-110 transition-all duration-300"></i></a>
+                                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter-square hover:text-accent transform hover:-translate-y-2 hover:scale-110 transition-all duration-300"></i></a>
+                                </div>
                             </div>
-                            <div class="font-semibold text-gray-900">- Rajesh Kumar</div>
                         </div>
                     </div>
-                    <!-- Testimonial 3 -->
-                    <div class="testimonial-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
-                        <div class="card card-inner-padding text-center h-full flex flex-col justify-between">
-                            <div>
-                                <i class="fas fa-quote-left text-primary text-4xl mb-4"></i>
-                                <p class="text-gray-700 mb-6 italic">
-                                    "The best dental care I've received! The team is professional, and the clinic environment is very calming.
-                                    They genuinely care about their patients' well-being. A big thank you!"
-                                </p>
-                            </div>
-                            <div class="font-semibold text-gray-900">- Aisha Begum</div>
-                        </div>
-                    </div>
-                    <!-- Testimonial 4 -->
-                    <div class="testimonial-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
-                        <div class="card card-inner-padding text-center h-full flex flex-col justify-between">
-                            <div>
-                                <i class="fas fa-quote-left text-primary text-4xl mb-4"></i>
-                                <p class="text-gray-700 mb-6 italic">
-                                    "Ashwini Dental Clinic is my go-to for all dental needs. Dr. Hima is highly skilled and makes
-                                    even complex procedures feel easy. The results are always fantastic."
-                                </p>
-                            </div>
-                            <div class="font-semibold text-gray-900">- Sameer Khan</div>
-                        </div>
-                    </div>
-                    <!-- Testimonial 5 -->
-                    <div class="testimonial-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
-                        <div class="card card-inner-padding text-center h-full flex flex-col justify-between">
-                            <div>
-                                <i class="fas fa-quote-left text-primary text-4xl mb-4"></i>
-                                <p class="text-gray-700 mb-6 italic">
-                                    "From the moment I stepped in, I felt welcomed and at ease. The professionalism and warmth of
-                                    Dr. Spoorthi and her staff are unmatched. My kids love visiting too!"
-                                </p>
-                            </div>
-                            <div class="font-semibold text-gray-900">- Deepa Reddy</div>
-                        </div>
-                    </div>
-                    <!-- Testimonial 6 -->
-                    <div class="testimonial-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
-                        <div class="card card-inner-padding text-center h-full flex flex-col justify-between">
-                            <div>
-                                <i class="fas fa-quote-left text-primary text-4xl mb-4"></i>
-                                <p class="text-gray-700 mb-6 italic">
-                                    "I used to dread dental visits, but Ashwini Dental Clinic changed that. The process was painless,
-                                    and the team ensured I was comfortable throughout. Highly recommended for nervous patients."
-                                </p>
-                            </div>
-                            <div class="font-semibold text-gray-900">- John Doe</div>
-                        </div>
-                    </div>
-                    <!-- Testimonial 7 -->
-                    <div class="testimonial-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
-                        <div class="card card-inner-padding text-center h-full flex flex-col justify-between">
-                            <div>
-                                <i class="fas fa-quote-left text-primary text-4xl mb-4"></i>
-                                <p class="text-gray-700 mb-6 italic">
-                                    "The clarity and transparency in treatment planning were impressive. Dr. Spoorthi is very honest
-                                    and provides the best advice for long-term dental health. Excellent service!"
-                                </p>
-                            </div>
-                            <div class="font-semibold text-gray-900">- Sarah Wilson</div>
-                        </div>
-                    </div>
+                    <!-- Carousel Controls -->
+                    <button class="carousel-control left hidden md:block" id="prevDoctor"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-control right hidden md:block" id="nextDoctor"><i class="fas fa-chevron-right"></i></button>
                 </div>
-                <!-- Carousel Controls -->
-                <button class="carousel-control left" id="testimonial-prev">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="carousel-control right" id="testimonial-next">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="bg-white fade-in-up">
-        <div class="container mx-auto px-6">
-            <h2 class="section-heading">Our Clinic Environment & Smiles</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <!-- Gallery Item 1 -->
-                <div class="gallery-item">
-                    <img src="https://placehold.co/600x450/e8f0fe/1a73e8?text=Clinic+Reception" alt="Clinic Reception Area">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-24 md:py-32 bg-white">
+            <div class="container">
+                <h2 class="section-heading">What Our Patients Say</h2>
+                <div class="testimonial-carousel relative">
+                    <div class="testimonial-track flex" id="testimonialTrack">
+                        <!-- Testimonial 1 -->
+                        <div class="testimonial-slide w-full flex-shrink-0 p-4">
+                            <div class="card card-inner-padding text-center fade-in-up">
+                                <i class="fas fa-quote-left text-6xl text-accent mb-4"></i>
+                                <p class="text-lg italic text-gray-700 leading-relaxed mb-6">
+                                    "Ashwini Dental Clinic transformed my smile! The team is incredibly professional and caring. Dr. Priya made me feel comfortable throughout my entire implant procedure. Highly recommend!"
+                                </p>
+                                <p class="text-xl font-semibold text-primary-dark">- Sarah J.</p>
+                            </div>
+                        </div>
+                        <!-- Testimonial 2 -->
+                        <div class="testimonial-slide w-full flex-shrink-0 p-4">
+                            <div class="card card-inner-padding text-center fade-in-up delay-100">
+                                <i class="fas fa-quote-left text-6xl text-accent mb-4"></i>
+                                <p class="text-lg italic text-gray-700 leading-relaxed mb-6">
+                                    "I used to dread dental visits, but Ashwini Dental changed that. The staff is so friendly, and the clinic is spotless. My kids actually enjoy coming here for their check-ups!"
+                                </p>
+                                <p class="text-xl font-semibold text-primary-dark">- Mark T.</p>
+                            </div>
+                        </div>
+                        <!-- Testimonial 3 -->
+                        <div class="testimonial-slide w-full flex-shrink-0 p-4">
+                            <div class="card card-inner-padding text-center fade-in-up delay-200">
+                                <i class="fas fa-quote-left text-6xl text-accent mb-4"></i>
+                                <p class="text-lg italic text-gray-700 leading-relaxed mb-6">
+                                    "From veneers to regular cleanings, Dr. Anil always delivers exceptional results. My smile has never looked better, and I receive compliments constantly. Thank you, Ashwini Dental!"
+                                </p>
+                                <p class="text-xl font-semibold text-primary-dark">- Emily R.</p>
+                            </div>
+                        </div>
+                        <!-- Testimonial 4 -->
+                        <div class="testimonial-slide w-full flex-shrink-0 p-4">
+                            <div class="card card-inner-padding text-center fade-in-up delay-300">
+                                <i class="fas fa-quote-left text-6xl text-accent mb-4"></i>
+                                <p class="text-lg italic text-gray-700 leading-relaxed mb-6">
+                                    "The most professional and kind dental team I've ever encountered. They explain everything thoroughly and genuinely care about their patients. Highly recommend for any dental needs."
+                                </p>
+                                <p class="text-xl font-semibold text-primary-dark">- David K.</p>
+                            </div>
+                        </div>
                     </div>
+                    <!-- Carousel Controls -->
+                    <button class="carousel-control left" id="prevTestimonial"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-control right" id="nextTestimonial"><i class="fas fa-chevron-right"></i></button>
                 </div>
-                <!-- Gallery Item 2 -->
-                <div class="gallery-item">
-                    <img src="https://placehold.co/600x450/e8f0fe/1a73e8?text=Treatment+Room+1" alt="Treatment Room">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-24 md:py-32 bg-gradient-light-grey">
+            <div class="container">
+                <h2 class="section-heading">Our Clinic in Pictures</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div class="gallery-item fade-in-up">
+                        <img src="https://placehold.co/600x450/1A73E8/ffffff?text=Reception+Area" alt="Reception Area">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
                     </div>
-                </div>
-                <!-- Gallery Item 3 -->
-                <div class="gallery-item">
-                    <img src="https://placehold.co/600x450/e8f0fe/1a73e8?text=Modern+Equipment" alt="Modern Dental Equipment">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
+                    <div class="gallery-item fade-in-up delay-100">
+                        <img src="https://placehold.co/600x450/34A853/ffffff?text=Treatment+Room+1" alt="Treatment Room 1">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
                     </div>
-                </div>
-                <!-- Gallery Item 4 -->
-                <div class="gallery-item">
-                    <img src="https://placehold.co/600x450/e8f0fe/1a73e8?text=Sterilization+Area" alt="Sterilization Area">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
+                    <div class="gallery-item fade-in-up delay-200">
+                        <img src="https://placehold.co/600x450/FBBC04/ffffff?text=Modern+Equipment" alt="Modern Equipment">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
                     </div>
-                </div>
-                <!-- Gallery Item 5 -->
-                <div class="gallery-item">
-                    <img src="https://placehold.co/600x450/e8f0fe/1a73e8?text=Patient+Comfort" alt="Patient Comfort Chair">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
+                    <div class="gallery-item fade-in-up delay-300">
+                        <img src="https://placehold.co/600x450/1A73E8/ffffff?text=Comfortable+Waiting" alt="Comfortable Waiting Area">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
                     </div>
-                </div>
-                <!-- Gallery Item 6 -->
-                <div class="gallery-item">
-                    <img src="https://placehold.co/600x450/e8f0fe/1a73e8?text=Happy+Patient" alt="Happy Patient Smile">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
+                    <div class="gallery-item fade-in-up delay-400">
+                        <img src="https://placehold.co/600x450/34A853/ffffff?text=Dental+Team" alt="Dental Team">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
                     </div>
-                </div>
-                <!-- Gallery Item 7 -->
-                <div class="gallery-item">
-                    <img src="https://placehold.co/600x450/e8f0fe/1a73e8?text=Dr+Consulting" alt="Doctor Consultation">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
+                    <div class="gallery-item fade-in-up delay-500">
+                        <img src="https://placehold.co/600x450/FBBC04/ffffff?text=Sterilization+Area" alt="Sterilization Area">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
                     </div>
-                </div>
-                <!-- Gallery Item 8 -->
-                <div class="gallery-item">
-                    <img src="https://placehold.co/600x450/e8f0fe/1a73e8?text=Kids+Dental+Area" alt="Kids Dental Area">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
+                    <div class="gallery-item fade-in-up delay-600">
+                        <img src="https://placehold.co/600x450/1A73E8/ffffff?text=Child+Friendly" alt="Child Friendly Corner">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
                     </div>
-                </div>
-                <!-- Gallery Item 9 -->
-                <div class="gallery-item">
-                    <img src="https://placehold.co/600x450/e8f0fe/1a73e8?text=Dental+X-Ray" alt="Dental X-Ray Equipment">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-                <!-- Gallery Item 10 -->
-                <div class="gallery-item">
-                    <img src="https://placehold.co/600x450/e8f0fe/1a73e8?text=Welcoming+Staff" alt="Welcoming Staff">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
+                    <div class="gallery-item fade-in-up delay-700">
+                        <img src="https://placehold.co/600x450/34A853/ffffff?text=Consultation+Room" alt="Consultation Room">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- FAQ Section (Frequently Asked Questions) -->
-    <section id="faq" class="bg-bg-light fade-in-up">
-        <div class="container mx-auto px-6">
-            <h2 class="section-heading">Frequently Asked Questions</h2>
-            <div class="max-w-3xl mx-auto">
-                <!-- FAQ Item 1 -->
-                <div class="accordion-item">
-                    <div class="accordion-header flex justify-between items-center" id="faq-header-1">
-                        <span class="font-semibold text-lg">What are your clinic hours?</span>
-                        <i class="fas fa-chevron-down"></i>
+        <!-- FAQ Section -->
+        <section id="faq" class="py-24 md:py-32 bg-white">
+            <div class="container">
+                <h2 class="section-heading">Frequently Asked Questions</h2>
+                <div class="max-w-3xl mx-auto">
+                    <div class="accordion-item fade-in-up">
+                        <div class="accordion-header" data-accordion="1">
+                            <h3>What payment options do you accept?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content" id="accordion-content-1">
+                            <p>We accept most major credit cards, debit cards, and cash. We also work with various dental insurance providers and offer flexible payment plans to ensure dental care is accessible for everyone. Please contact our front desk for more detailed information regarding your specific insurance plan or payment arrangements.</p>
+                        </div>
                     </div>
-                    <div class="accordion-content" id="faq-content-1">
-                        <p class="p-4">
-                            Our clinic hours are Monday to Saturday, from 9:00 AM to 7:00 PM. We are closed on Sundays.
-                            Appointments are highly recommended to ensure you receive timely care.
-                        </p>
+                    <div class="accordion-item fade-in-up delay-100">
+                        <div class="accordion-header" data-accordion="2">
+                            <h3>How often should I visit the dentist?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content" id="accordion-content-2">
+                            <p>For most patients, we recommend a dental check-up and cleaning every six months. Regular visits help us monitor your oral health, prevent common issues like cavities and gum disease, and address any concerns early on. Your dentist may recommend more frequent visits based on your individual needs and oral health history.</p>
+                        </div>
                     </div>
-                </div>
-                <!-- FAQ Item 2 -->
-                <div class="accordion-item">
-                    <div class="accordion-header flex justify-between items-center" id="faq-header-2">
-                        <span class="font-semibold text-lg">Do you accept dental insurance?</span>
-                        <i class="fas fa-chevron-down"></i>
+                    <div class="accordion-item fade-in-up delay-200">
+                        <div class="accordion-header" data-accordion="3">
+                            <h3>Do you offer emergency dental services?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content" id="accordion-content-3">
+                            <p>Yes, we understand that dental emergencies can happen at any time. We strive to accommodate emergency appointments as quickly as possible. If you are experiencing a dental emergency, please call our clinic immediately, and we will guide you through the next steps and schedule your urgent visit.</p>
+                        </div>
                     </div>
-                    <div class="accordion-content" id="faq-content-2">
-                        <p class="p-4">
-                            Yes, we accept a wide range of dental insurance plans. Please contact our front desk with your
-                            insurance details, and we'll be happy to verify your coverage and benefits.
-                        </p>
-                    </div>
-                </div>
-                <!-- FAQ Item 3 -->
-                <div class="accordion-item">
-                    <div class="accordion-header flex justify-between items-center" id="faq-header-3">
-                        <span class="font-semibold text-lg">What safety measures do you have in place for COVID-19?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="accordion-content" id="faq-content-3">
-                        <p class="p-4">
-                            Patient and staff safety is our top priority. We adhere to the highest standards of sterilization and
-                            cross-infection control. This includes extensive disinfection protocols, HEPA air filtration,
-                            and personal protective equipment (PPE) for our team. We also practice social distancing in waiting areas.
-                        </p>
-                    </div>
-                </div>
-                <!-- FAQ Item 4 -->
-                <div class="accordion-item">
-                    <div class="accordion-header flex justify-between items-center" id="faq-header-4">
-                        <span class="font-semibold text-lg">How often should I visit the dentist?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="accordion-content" id="faq-content-4">
-                        <p class="p-4">
-                            We generally recommend dental check-ups and cleanings every six months for most patients.
-                            However, based on your oral health needs, Dr. Spoorthi might recommend more frequent visits.
-                        </p>
-                    </div>
-                </div>
-                <!-- FAQ Item 5 -->
-                <div class="accordion-item">
-                    <div class="accordion-header flex justify-between items-center" id="faq-header-5">
-                        <span class="font-semibold text-lg">What should I do in a dental emergency?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="accordion-content" id="faq-content-5">
-                        <p class="p-4">
-                            In case of a dental emergency, please call our clinic immediately at <span class="font-semibold">040-12345678</span>.
-                            If it's after hours, our answering service will guide you on the next steps. Do not hesitate to reach out for urgent care.
-                        </p>
-                    </div>
-                </div>
-                <!-- FAQ Item 6 -->
-                <div class="accordion-item">
-                    <div class="accordion-header flex justify-between items-center" id="faq-header-6">
-                        <span class="font-semibold text-lg">Are you accepting new patients?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="accordion-content" id="faq-content-6">
-                        <p class="p-4">
-                            Yes, Ashwini Dental Clinic is always happy to welcome new patients to our practice. We strive to make your
-                            first visit as smooth and informative as possible. You can book your first appointment online or by phone.
-                        </p>
-                    </div>
-                </div>
-                <!-- FAQ Item 7 -->
-                <div class="accordion-item">
-                    <div class="accordion-header flex justify-between items-center" id="faq-header-7">
-                        <span class="font-semibold text-lg">What kind of payment options do you offer?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="accordion-content" id="faq-content-7">
-                        <p class="p-4">
-                            We accept various payment methods including cash, major credit cards (Visa, MasterCard, Amex), and debit cards.
-                            For extensive treatments, we can discuss flexible payment plans or financing options to ensure you get the care you need.
-                        </p>
+                    <div class="accordion-item fade-in-up delay-300">
+                        <div class="accordion-header" data-accordion="4">
+                            <h3>What steps do you take for patient safety?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content" id="accordion-content-4">
+                            <p>Patient safety is our top priority. We adhere to the highest standards of sterilization and infection control protocols as mandated by dental associations. Our equipment is regularly sanitized, and disposable tools are used whenever appropriate. We maintain a clean and safe environment for all our patients and staff.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Us Section -->
-    <section id="contact" class="bg-white fade-in-up">
-        <div class="container mx-auto px-6">
-            <h2 class="section-heading">Get in Touch with Us</h2>
-            <div class="flex flex-col lg:flex-row gap-12 items-start">
-                <!-- Contact Form -->
-                <div class="lg:w-2/3 w-full card p-8 lg:p-10">
-                    <h3 class="text-3xl font-bold mb-6 text-gray-900">Send Us a Message</h3>
-                    <form id="contact-form" class="space-y-5">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Full Name</label>
-                            <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" required>
-                            <div class="text-red-500 text-sm mt-1 hidden" id="name-error">Please enter your full name.</div>
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 md:py-32 bg-gradient-light-blue">
+            <div class="container">
+                <h2 class="section-heading">Contact Us</h2>
+                <div class="card p-10 lg:p-16 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10">
+                    <div class="w-full lg:w-1/2 fade-in-up">
+                        <h3 class="text-4xl font-bold mb-6 text-text-color-dark">Book Your Appointment Today</h3>
+                        <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                            Have questions or ready to schedule your visit? Fill out the form below or reach out to us directly. We look forward to welcoming you to Ashwini Dental Clinic!
+                        </p>
+                        <form id="contact-form" class="space-y-6">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" required>
+                                <div class="form-error-message" id="name-error">Name is required.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required>
+                                <div class="form-error-message" id="email-error">Please enter a valid email.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone (Optional)</label>
+                                <input type="tel" id="phone" name="phone" class="form-input" placeholder="+91 98765 43210">
+                            </div>
+                            <div class="form-group">
+                                <label for="message" class="form-label">Your Message</label>
+                                <textarea id="message" name="message" class="form-textarea" rows="6" placeholder="Tell us about your dental needs or questions..."></textarea>
+                                <div class="form-error-message" id="message-error">Message is required.</div>
+                            </div>
+                            <button type="submit" class="btn-primary w-full sm:w-auto">Send Message</button>
+                        </form>
+                        <div id="form-success-message" class="hidden mt-6 p-4 rounded-xl bg-secondary-color text-white text-center font-semibold">
+                            Thank you for your message! We'll get back to you soon.
                         </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email Address</label>
-                            <input type="email" id="email" name="email" class="form-input" placeholder="your@example.com" required>
-                            <div class="text-red-500 text-sm mt-1 hidden" id="email-error">Please enter a valid email address.</div>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone" class="form-label">Phone Number (Optional)</label>
-                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+91 98765 43210">
-                            <div class="text-red-500 text-sm mt-1 hidden" id="phone-error">Please enter a valid phone number.</div>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject" class="form-label">Subject</label>
-                            <input type="text" id="subject" name="subject" class="form-input" placeholder="Appointment, Inquiry, etc." required>
-                            <div class="text-red-500 text-sm mt-1 hidden" id="subject-error">Please enter a subject.</div>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="form-label">Your Message</label>
-                            <textarea id="message" name="message" rows="6" class="form-textarea" placeholder="Type your message here..." required></textarea>
-                            <div class="text-red-500 text-sm mt-1 hidden" id="message-error">Please enter your message.</div>
-                        </div>
-                        <button type="submit" class="btn-primary w-full lg:w-auto">Send Message</button>
-                    </form>
-                    <div id="form-success-message" class="mt-4 text-green-600 font-semibold text-center hidden">
-                        Thank you for your message! We will get back to you shortly.
                     </div>
-                    <div id="form-error-message" class="mt-4 text-red-600 font-semibold text-center hidden">
-                        There was an error sending your message. Please try again later.
-                    </div>
-                </div>
-
-                <!-- Contact Information & Map -->
-                <div class="lg:w-1/3 w-full card p-8 lg:p-10 bg-bg-light">
-                    <h3 class="text-3xl font-bold mb-6 text-gray-900">Our Details</h3>
-                    <div class="space-y-6 text-gray-700 text-lg">
-                        <p class="flex items-center">
-                            <i class="fas fa-map-marker-alt text-primary mr-3 text-2xl"></i>
-                            <span class="flex-1">Ashwini Dental Clinic, Near Aashalata Hospital, Madinaguda, Miyapur, Hyderabad, Telangana 500049</span>
-                        </p>
-                        <p class="flex items-center">
-                            <i class="fas fa-phone-alt text-primary mr-3 text-2xl"></i>
-                            <a href="tel:+914012345678" class="hover:text-primary transition-colors duration-200">+91 40 1234 5678</a>
-                        </p>
-                        <p class="flex items-center">
-                            <i class="fas fa-envelope text-primary mr-3 text-2xl"></i>
-                            <a href="mailto:info@ashwinidental.com" class="hover:text-primary transition-colors duration-200">info@ashwinidental.com</a>
-                        </p>
-                        <p class="flex items-center">
-                            <i class="fas fa-clock text-primary mr-3 text-2xl"></i>
-                            <span>Mon - Sat: 9:00 AM - 7:00 PM</span>
-                        </p>
-                    </div>
-                    <div class="mt-8">
-                        <h4 class="text-2xl font-bold mb-4 text-gray-900">Find Us on Map</h4>
-                        <!-- Google Maps Embed - Placeholder. Replace with actual embed code from Google Maps. -->
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.860166649491!2d78.36140417502755!3d17.46468758343868!2m3!1f0!2f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcbedaac401211d%3A0x6a0a80e0b3c2e171!2sAshwini%20Dental%20Clinic!5e0!3m2!1sen!2sin!4v1678888888888!5m2!1sen!2sin"
-                            width="100%" height="300" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
+                    <div class="w-full lg:w-1/2 fade-in-up delay-200">
+                        <div class="bg-gray-100 rounded-2xl overflow-hidden shadow-md-custom">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.0125714041135!2d78.3686883148784!3d17.45663798804675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcbd1f8a70c7b7b%3A0xc3f6d7d4f9e0f6f7!2sMiyapur%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1678873040000!5m2!1sen!2sin"
+                                width="100%" height="450" style="border:0; border-radius: 1rem;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                        <div class="mt-8 space-y-4 text-lg">
+                            <p class="flex items-center text-text-color-dark"><i class="fas fa-map-marker-alt text-primary-color mr-3 text-2xl"></i> Miyapur, Hyderabad, Telangana, India</p>
+                            <p class="flex items-center text-text-color-dark"><i class="fas fa-phone-alt text-primary-color mr-3 text-2xl"></i> +91 987 654 3210</p>
+                            <p class="flex items-center text-text-color-dark"><i class="fas fa-envelope text-primary-color mr-3 text-2xl"></i> info@ashwinidental.com</p>
+                            <p class="flex items-center text-text-color-dark"><i class="fas fa-clock text-primary-color mr-3 text-2xl"></i> Mon - Sat: 9:00 AM - 6:00 PM</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-primary text-white py-12">
-        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-            <!-- Clinic Info -->
-            <div class="space-y-4">
-                <h3 class="text-2xl font-bold mb-3">Ashwini Dental Clinic</h3>
-                <p class="text-sm leading-relaxed">
-                    Committed to providing top-notch dental care with a gentle touch.
-                    Your healthy and beautiful smile is our greatest reward.
+    <footer class="bg-dark text-text-color-light py-20">
+        <div class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            <!-- About -->
+            <div>
+                <h3 class="text-3xl font-bold mb-6 text-primary-color">Ashwini Dental</h3>
+                <p class="text-lg leading-relaxed mb-6">
+                    Providing top-tier dental care with compassion and expertise. Your trusted partner for a healthy, beautiful smile.
                 </p>
-                <div class="flex justify-center md:justify-start space-x-4 mt-4">
-                    <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="text-white hover:text-accent transition-colors duration-200 text-xl">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="text-white hover:text-accent transition-colors duration-200 text-xl">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="text-white hover:text-accent transition-colors duration-200 text-xl">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="text-white hover:text-accent transition-colors duration-200 text-xl">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
+                <div class="flex space-x-4 text-2xl">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f text-primary-color hover:text-accent transition-colors duration-300"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter text-primary-color hover:text-accent transition-colors duration-300"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram text-primary-color hover:text-accent transition-colors duration-300"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in text-primary-color hover:text-accent transition-colors duration-300"></i></a>
                 </div>
             </div>
 
             <!-- Quick Links -->
-            <div class="space-y-4">
-                <h3 class="text-2xl font-bold mb-3">Quick Links</h3>
-                <ul class="space-y-2">
-                    <li><a href="#about" class="hover:underline text-sm">About Us</a></li>
-                    <li><a href="#services" class="hover:underline text-sm">Services</a></li>
-                    <li><a href="#doctors" class="hover:underline text-sm">Meet the Doctor</a></li>
-                    <li><a href="#testimonials" class="hover:underline text-sm">Testimonials</a></li>
-                    <li><a href="#gallery" class="hover:underline text-sm">Gallery</a></li>
-                    <li><a href="#faq" class="hover:underline text-sm">FAQs</a></li>
-                    <li><a href="#contact" class="hover:underline text-sm">Contact Us</a></li>
-                    <li><a href="#" class="hover:underline text-sm">Privacy Policy</a></li>
-                    <li><a href="#" class="hover:underline text-sm">Terms of Service</a></li>
+            <div>
+                <h3 class="text-2xl font-bold mb-6 text-text-color-dark">Quick Links</h3>
+                <ul class="space-y-3 text-lg">
+                    <li><a href="#about" class="hover:text-primary-color transition-colors duration-300">About Us</a></li>
+                    <li><a href="#services" class="hover:text-primary-color transition-colors duration-300">Services</a></li>
+                    <li><a href="#doctors" class="hover:text-primary-color transition-colors duration-300">Our Team</a></li>
+                    <li><a href="#gallery" class="hover:text-primary-color transition-colors duration-300">Gallery</a></li>
+                    <li><a href="#faq" class="hover:text-primary-color transition-colors duration-300">FAQ</a></li>
                 </ul>
             </div>
 
-            <!-- Contact Information -->
-            <div class="space-y-4">
-                <h3 class="text-2xl font-bold mb-3">Contact Us</h3>
-                <p class="text-sm flex items-center justify-center md:justify-start">
-                    <i class="fas fa-map-marker-alt mr-3 text-lg"></i>
-                    <span>Ashwini Dental Clinic, Miyapur, Hyderabad, India</span>
-                </p>
-                <p class="text-sm flex items-center justify-center md:justify-start">
-                    <i class="fas fa-phone-alt mr-3 text-lg"></i>
-                    <a href="tel:+914012345678" class="hover:underline">+91 40 1234 5678</a>
-                </p>
-                <p class="text-sm flex items-center justify-center md:justify-start">
-                    <i class="fas fa-envelope mr-3 text-lg"></i>
-                    <a href="mailto:info@ashwinidental.com" class="hover:underline">info@ashwinidental.com</a>
-                </p>
-                <p class="text-sm flex items-center justify-center md:justify-start">
-                    <i class="fas fa-clock mr-3 text-lg"></i>
-                    <span>Mon - Sat: 9:00 AM - 7:00 PM</span>
-                </p>
+            <!-- Services -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6 text-text-color-dark">Services</h3>
+                <ul class="space-y-3 text-lg">
+                    <li><a href="#services" class="hover:text-primary-color transition-colors duration-300">General Dentistry</a></li>
+                    <li><a href="#services" class="hover:text-primary-color transition-colors duration-300">Cosmetic Dentistry</a></li>
+                    <li><a href="#services" class="hover:text-primary-color transition-colors duration-300">Oral Surgery</a></li>
+                    <li><a href="#services" class="hover:text-primary-color transition-colors duration-300">Dental Implants</a></li>
+                    <li><a href="#services" class="hover:text-primary-color transition-colors duration-300">Pediatric Dentistry</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6 text-text-color-dark">Contact Us</h3>
+                <p class="flex items-center mb-3 text-lg"><i class="fas fa-map-marker-alt text-primary-color mr-3"></i> Miyapur, Hyderabad, Telangana</p>
+                <p class="flex items-center mb-3 text-lg"><i class="fas fa-phone-alt text-primary-color mr-3"></i> +91 987 654 3210</p>
+                <p class="flex items-center mb-3 text-lg"><i class="fas fa-envelope text-primary-color mr-3"></i> info@ashwinidental.com</p>
+                <p class="flex items-center text-lg"><i class="fas fa-clock text-primary-color mr-3"></i> Mon - Sat: 9:00 AM - 6:00 PM</p>
             </div>
         </div>
-        <div class="text-center text-sm mt-8 border-t border-white border-opacity-20 pt-6">
-            <p>&copy; <span id="current-year"></span> Ashwini Dental Clinic. All rights reserved. Designed with <i class="fas fa-heart text-red-500"></i> by Your AI Assistant.</p>
+        <div class="border-t border-border-color mt-12 pt-8 text-center text-sm text-text-color-light">
+            &copy; 2025 Ashwini Dental Clinic. All rights reserved.
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" aria-label="Back to top">
+    <button id="back-to-top" class="fixed bottom-10 right-10 p-4 rounded-full bg-primary-color text-white shadow-xl-custom opacity-0 invisible transition-all duration-300">
         <i class="fas fa-chevron-up text-xl"></i>
     </button>
 
-    <!-- External JavaScript file -->
+    <!-- Your Custom JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
