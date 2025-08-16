@@ -1,15 +1,17 @@
 /*
  * Ashwini Dental Clinic Website Stylesheet
  * Author: AI Assistant
- * Version: 2.1 (Further Premium Enhancements inspired by austinoralsurgery.com)
+ * Version: 2.2 (Expanded for Static Hosting - No @apply directives)
  * Date: August 16, 2025
  *
  * This stylesheet provides comprehensive styling for the Ashwini Dental Clinic website,
- * leveraging Tailwind CSS for utility-first development and custom CSS for
- * unique design elements, animations, and responsiveness.
+ * with all Tailwind's @apply directives manually expanded into standard CSS properties.
+ * This ensures the styles load correctly on static hosting environments like GitHub Pages
+ * without a PostCSS or Tailwind build step, eliminating CSS parsing warnings.
  *
  * Goal: Achieve a professional, modern, and aesthetically pleasing design
- * that reflects a high-quality dental clinic, as if it cost $10,000.
+ * that reflects a high-quality dental clinic, as if it cost $10,000,
+ * while being fully compatible with direct browser rendering.
  *
  * Contents:
  * 1. Root Variables for Theming
@@ -22,15 +24,6 @@
  * 8. Responsive Adjustments (Media Queries)
  * 9. Preloader and Back-to-Top Button
  * 10. General Layout and Spacing
- *
- * Premium Enhancements in this Version (based on austinoralsurgery.com inspiration):
- * - Even more refined typography with specific attention to line-heights and letter-spacing.
- * - Deeper, more realistic shadow system for a lifted, premium feel.
- * - Subtle gradient overlays on cards and elements for depth.
- * - Enhanced hero section with a more prominent overlay and clearer CTA focus.
- * - Improved icon styling across service cards and contact info.
- * - Better spacing and padding to create a more "airy" and luxurious layout.
- * - Refined border treatments.
  */
 
 /* ========================================= */
@@ -128,14 +121,19 @@ img {
 
 /* Buttons */
 .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem 2.5rem; /* Increased padding for more substantial buttons */
-    border-radius: 9999px; /* Fully rounded corners */
-    font-weight: 600; /* Semi-bold font */
-    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); /* Smoother, bouncier transition */
-    box-shadow: 0 6px 15px var(--shadow-medium), 0 3px 6px var(--shadow-light); /* Layered shadow */
+    padding-left: 2rem;   /* px-8 */
+    padding-right: 2rem;  /* px-8 */
+    padding-top: 0.75rem; /* py-3 */
+    padding-bottom: 0.75rem; /* py-3 */
+    border-radius: 9999px; /* rounded-full */
+    font-weight: 600; /* font-semibold */
+    transition-property: all; /* transition-all */
+    transition-duration: 300ms; /* duration-300 */
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* ease-in-out */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    outline: 2px solid transparent; /* focus:outline-none */
+    outline-offset: 2px; /* focus:outline-none */
+    /* focus:ring-4 requires a color, so we use a custom var-based focus */
     background-color: var(--primary-color);
     color: white;
     border: none;
@@ -162,7 +160,7 @@ img {
 }
 .btn-primary:hover {
     background-color: var(--primary-dark);
-    box-shadow: 0 10px 25px var(--shadow-hover-deep), 0 5px 12px var(--shadow-hover-light); /* More pronounced shadow on hover */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* hover:shadow-xl */
     transform: translateY(-6px); /* More significant lift */
 }
 .btn-primary:focus {
@@ -171,14 +169,18 @@ img {
 }
 
 .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem 2.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
     border-radius: 9999px;
     font-weight: 600;
-    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-    box-shadow: 0 6px 15px var(--shadow-medium), 0 3px 6px var(--shadow-light);
+    transition-property: all;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    outline: 2px solid transparent;
+    outline-offset: 2px;
     background-color: transparent;
     color: var(--primary-color);
     border: 2px solid var(--primary-color);
@@ -190,7 +192,7 @@ img {
 .btn-secondary:hover {
     background-color: var(--primary-color);
     color: white;
-    box-shadow: 0 10px 25px var(--shadow-hover-deep), 0 5px 12px var(--shadow-hover-light);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     transform: translateY(-6px);
 }
 .btn-secondary:focus {
@@ -288,29 +290,29 @@ img {
     left: 0;
     right: 0;
     z-index: 100;
+    transition-property: all;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     background-color: white;
     box-shadow: 0 3px 15px rgba(0,0,0,0.1); /* More pronounced shadow */
     padding-top: 1.4rem; /* Default padding */
     padding-bottom: 1.4rem;
-    transition: all 0.3s ease-in-out;
+    border-bottom: 1px solid rgba(0,0,0,0.05); /* Subtle border */
 }
 .navbar-scrolled {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2); /* Even more pronounced shadow on scroll */
+    padding-top: 0.75rem; /* py-3 */
+    padding-bottom: 0.75rem; /* py-3 */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2); /* shadow-xl */
 }
 
 .navbar-brand {
-    font-size: 2.1rem; /* Larger font for brand name */
-    font-weight: 800;
-    color: var(--primary-color);
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700; /* font-bold */
     display: flex;
     align-items: center;
-    gap: 0.7rem;
-    letter-spacing: -0.04em; /* Tighter letter spacing for logo */
+    color: var(--primary-color);
 }
 .navbar-brand i {
-    color: var(--primary-color);
     font-size: 2.8rem; /* Larger icon */
     transform: rotate(-10deg); /* Slight rotation for dynamic feel */
     transition: transform 0.3s ease;
@@ -320,12 +322,17 @@ img {
 }
 
 .nav-link {
-    color: var(--text-color-light);
-    font-weight: 500;
-    padding: 0.8rem 1.4rem; /* Increased padding for click area */
-    border-radius: 0.6rem; /* More rounded */
-    transition: all 0.25s ease-in-out;
-    font-size: 1.15rem; /* Slightly larger nav links */
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 500; /* font-medium */
+    color: #4b5563; /* text-gray-700 */
+    transition-property: color; /* transition-colors */
+    transition-duration: 200ms; /* duration-200 */
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* ease-in-out */
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem; /* px-4 */
+    padding-top: 0.5rem; /* py-2 */
+    padding-bottom: 0.5rem; /* py-2 */
+    border-radius: 0.375rem; /* rounded-md */
     position: relative;
     overflow: hidden;
 }
@@ -342,15 +349,15 @@ img {
     transition: width 0.3s ease-out;
 }
 .nav-link:hover {
-    color: var(--primary-dark); /* Darker primary color on hover */
+    color: var(--primary-color); /* hover:text-primary */
     background-color: var(--bg-dark);
 }
 .nav-link:hover::after {
     width: 80%; /* Expand underline on hover, leaving small gaps on sides */
 }
 .nav-link.active {
-    color: var(--primary-color);
-    font-weight: 700;
+    color: var(--primary-color); /* text-primary */
+    font-weight: 700; /* font-bold */
     background-color: var(--bg-dark);
 }
 .nav-link.active::after {
@@ -362,15 +369,18 @@ img {
     position: fixed;
     top: 0;
     right: 0;
-    width: 320px; /* Wider mobile menu */
-    height: 100%;
+    width: 16rem; /* w-64 */
     background-color: white;
-    box-shadow: -12px 0 35px rgba(0,0,0,0.4); /* Stronger shadow */
-    z-index: 110; /* Higher z-index than navbar */
+    height: 100%;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* shadow-2xl */
+    z-index: 50;
     transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition-property: transform;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
+    border-left: 1px solid rgba(0,0,0,0.1);
 }
 .mobile-menu.active {
     transform: translateX(0);
@@ -378,11 +388,16 @@ img {
 
 .mobile-menu-overlay {
     position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.7); /* Even darker, more prominent overlay */
-    z-index: 105;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* bg-black bg-opacity-50 */
+    z-index: 40;
     display: none;
-    transition: opacity 0.3s ease-in-out;
+    transition-property: opacity;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
 }
 .mobile-menu-overlay.active {
@@ -391,16 +406,13 @@ img {
 }
 
 .close-menu-btn {
-    font-size: 2.2rem; /* Larger close icon */
-    color: var(--text-color-light);
-    transition: color 0.2s ease, background-color 0.2s ease;
-    padding: 0.6rem;
-    border-radius: 50%;
-    background-color: transparent;
+    color: #4b5563; /* text-gray-600 */
+    transition-property: color;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .close-menu-btn:hover {
-    color: var(--primary-dark);
-    background-color: var(--bg-dark);
+    color: #ef4444; /* hover:text-red-500 */
 }
 
 .mobile-nav-link {
@@ -446,7 +458,7 @@ img {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(rgba(26, 115, 232, 0.7), rgba(26, 115, 232, 0.9)); /* Stronger overlay gradient */
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)); /* bg-black bg-opacity-30 (simplified) */
     z-index: 1;
 }
 #hero .container {
@@ -628,6 +640,7 @@ img {
 }
 .testimonial-carousel {
     position: relative;
+    overflow: hidden;
     padding-bottom: 4rem; /* More space for controls/dots */
 }
 .testimonial-track {
@@ -686,27 +699,29 @@ img {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.98); /* Almost opaque background */
-    color: var(--primary-color);
-    padding: 1.2rem; /* Even larger padding */
-    border-radius: 9999px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25); /* Stronger shadow */
+    padding: 1.2rem; /* p-3 */
+    border-radius: 9999px; /* rounded-full */
+    background-color: rgba(255, 255, 255, 0.7); /* bg-white bg-opacity-70 */
+    color: #4b5563; /* text-gray-600 */
+    transition-property: all;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
     cursor: pointer;
-    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: none;
     font-size: 1.8rem; /* Even larger arrows */
 }
 .carousel-control:hover {
-    background-color: var(--primary-color);
-    color: white;
+    background-color: rgba(255, 255, 255, 1); /* hover:bg-opacity-100 */
+    color: var(--primary-color); /* hover:text-primary */
     box-shadow: 0 12px 30px rgba(0,0,0,0.4);
     transform: translateY(-50%) scale(1.2); /* More pronounced scale on hover */
 }
 .carousel-control.left {
-    left: 2rem; /* More distance from edge */
+    left: 1rem; /* left-4 */
 }
 .carousel-control.right {
-    right: 2rem;
+    right: 1rem; /* right-4 */
 }
 @media (max-width: 768px) {
     .carousel-control {
@@ -726,44 +741,47 @@ img {
 .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 1.2rem; /* More rounded corners for gallery items */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Stronger shadow */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
     cursor: pointer;
-    padding-top: 75%; /* Maintain a 4:3 aspect ratio */
-    border: 1px solid var(--border-color); /* Subtle border for crispness */
+    padding-top: 75%; /* 4:3 aspect ratio (height / width * 100%) */
 }
 .gallery-item img {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Slower, smoother zoom with spring */
+    transform: scale(1); /* scale-100 */
+    transition-property: transform;
+    transition-duration: 500ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .gallery-item:hover img {
-    transform: scale(1.2); /* Even more pronounced zoom effect on hover */
+    transform: scale(1.05);
 }
 .gallery-overlay {
     position: absolute;
     inset: 0;
-    background-color: rgba(26, 115, 232, 0);
+    background-color: rgba(26, 115, 232, 0); /* bg-primary bg-opacity-0 */
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.4s ease;
+    transition-property: all;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .gallery-item:hover .gallery-overlay {
-    background-color: rgba(26, 115, 232, 0.9); /* More opaque primary color overlay */
+    background-color: rgba(26, 115, 232, 0.7); /* bg-primary bg-opacity-70 */
 }
 .gallery-overlay i {
     color: white;
-    font-size: 4rem; /* Larger icon */
+    font-size: 1.875rem; /* text-3xl */
     opacity: 0;
-    transform: translateY(25px); /* Starts further below its position */
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    transition-delay: 0.2s; /* Longer delay for icon animation */
+    transform: translateY(1.25rem); /* translate-y-5 */
+    transition-property: all;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .gallery-item:hover .gallery-overlay i {
     opacity: 1;
@@ -777,27 +795,26 @@ img {
     padding: 9rem 0;
 }
 .accordion-item {
-    margin-bottom: 1.5rem; /* Increased space between accordion items */
-    border: 1px solid var(--border-color);
-    border-radius: 1rem; /* More rounded corners for accordion items */
+    margin-bottom: 1rem; /* mb-4 */
+    border: 1px solid #e5e7eb; /* border-gray-200 */
+    border-radius: 0.5rem; /* rounded-lg */
     overflow: hidden;
-    box-shadow: 0 4px 12px var(--shadow-light); /* Slightly stronger shadow for each item */
 }
 .accordion-header {
-    background-color: white;
-    padding: 1.6rem 2.2rem; /* More generous padding */
-    cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.25rem; /* Larger font for headers */
+    padding: 1.25rem; /* p-5 */
+    cursor: pointer;
+    background-color: white;
+    transition-property: background-color;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     font-weight: 600;
     color: var(--text-color-dark);
-    transition: background-color 0.25s ease, color 0.25s ease;
 }
 .accordion-header:hover {
-    background-color: var(--bg-dark);
-    color: var(--primary-dark);
+    background-color: #f9fafb; /* hover:bg-gray-50 */
 }
 .accordion-header.active {
     background-color: var(--primary-light);
@@ -806,8 +823,10 @@ img {
     border-radius: 1rem 1rem 0 0;
 }
 .accordion-header i {
+    transition-property: transform;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 1.4rem; /* Larger arrow */
-    transition: transform 0.3s ease;
     color: var(--text-color-light);
 }
 .accordion-header.active i {
@@ -815,233 +834,241 @@ img {
     color: var(--primary-dark);
 }
 .accordion-content {
-    background-color: var(--primary-light);
-    color: var(--text-color-light);
+    padding: 1.25rem; /* p-5 */
+    background-color: #f9fafb; /* bg-gray-50 */
+    color: #4b5563; /* text-gray-700 */
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.7s ease-in-out, padding 0.7s ease-in-out, opacity 0.7s ease-in-out; /* Slower, smoother slide down */
+    transition-property: all;
+    transition-duration: 500ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
-    padding: 0 2.2rem;
     font-size: 1.15rem; /* Larger content text */
     line-height: 1.8;
 }
 .accordion-content.active {
-    max-height: 350px; /* Increased max height for content */
+    max-height: 350px; /* Adjust as needed for content length */
+    opacity: 1;
     padding-top: 1.5rem;
     padding-bottom: 2.2rem;
-    opacity: 1;
 }
 
-/* Contact Us Section */
-#contact {
-    background-color: white;
-    padding: 9rem 0;
+/* Form styling for a clean, modern look */
+.form-input {
+    width: 100%; /* w-full */
+    padding-left: 1.25rem; /* px-5 */
+    padding-right: 1.25rem; /* px-5 */
+    padding-top: 0.75rem; /* py-3 */
+    padding-bottom: 0.75rem; /* py-3 */
+    border: 1px solid #d1d5db; /* border-gray-300 */
+    border-radius: 0.5rem; /* rounded-lg */
+    outline: 2px solid transparent; /* focus:outline-none */
+    box-shadow: 0 0 0 2px rgba(0,0,0,0); /* placeholder for focus:ring-2 */
+    border-color: transparent; /* placeholder for focus:border-transparent */
+    transition-property: all;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-#contact .card {
-    box-shadow: 0 20px 60px rgba(0,0,0,0.25); /* More prominent shadow for contact cards */
-    border-radius: 1.8rem; /* More rounded */
+.form-input:focus {
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.5); /* focus:ring-2 with primary color */
+    border-color: transparent; /* focus:border-transparent */
 }
-#contact .card.bg-bg-light {
-    background-color: var(--bg-dark);
-    border: 1px solid rgba(26, 115, 232, 0.15); /* Slightly stronger blue border */
+
+.form-textarea {
+    width: 100%; /* w-full */
+    padding-left: 1.25rem; /* px-5 */
+    padding-right: 1.25rem; /* px-5 */
+    padding-top: 0.75rem; /* py-3 */
+    padding-bottom: 0.75rem; /* py-3 */
+    border: 1px solid #d1d5db; /* border-gray-300 */
+    border-radius: 0.5rem; /* rounded-lg */
+    outline: 2px solid transparent; /* focus:outline-none */
+    box-shadow: 0 0 0 2px rgba(0,0,0,0); /* placeholder for focus:ring-2 */
+    border-color: transparent; /* placeholder for focus:border-transparent */
+    transition-property: all;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    resize: vertical; /* resize-y */
 }
-#contact h3 {
-    font-size: 2.8rem; /* Larger contact heading */
-    margin-bottom: 2rem;
+.form-textarea:focus {
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.5); /* focus:ring-2 with primary color */
+    border-color: transparent; /* focus:border-transparent */
+}
+.form-label {
+    display: block;
+    color: #374151; /* text-gray-700 */
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 600; /* font-semibold */
+    margin-bottom: 0.5rem; /* mb-2 */
+}
+.form-group {
+    margin-bottom: 1.25rem; /* mb-5 */
+}
+
+/* Utility classes for visual flair */
+.section-heading {
+    font-size: 2.25rem; /* text-4xl */
+    line-height: 2.5rem; /* leading-10 */
+    font-weight: 800; /* font-extrabold */
+    text-align: center; /* text-center */
+    margin-bottom: 3rem; /* mb-12 */
+    position: relative;
     color: var(--text-color-dark);
-    letter-spacing: -0.025em;
 }
-#contact p.flex {
-    align-items: flex-start;
-    font-size: 1.2rem; /* Larger contact info text */
-    line-height: 1.7;
+.section-heading::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 1rem auto 0;
+    border-radius: 2px;
 }
-#contact p i {
-    color: var(--primary-color);
-    font-size: 2.2rem; /* Larger icon */
-    margin-right: 1.4rem;
-    flex-shrink: 0;
-}
-#contact iframe {
-    border: 3px solid var(--primary-light); /* More prominent border for map */
-    border-radius: 1.5rem;
-    width: 100%;
-    height: 420px; /* Increased height for the map */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-@media (max-width: 768px) {
-    #contact iframe {
-        height: 300px;
+@media (min-width: 1024px) { /* lg */
+    .section-heading {
+        font-size: 3rem; /* lg:text-5xl */
+        line-height: 1;
     }
 }
 
-/* Footer */
-footer {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 5rem 0; /* Increased padding */
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-}
-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('data:image/svg+xml;utf8,<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M60 0 L120 60 L60 120 L0 60 Z" fill="%23ffffff" opacity="0.08"/></svg>'); /* Larger, slightly more visible pattern */
-    background-size: 180px 180px;
-    opacity: 0.1;
-    z-index: 0;
-}
-footer .container {
-    position: relative;
-    z-index: 1;
-}
-footer h3 {
-    color: white;
-    font-size: 2.2rem; /* Larger footer headings */
-    margin-bottom: 2rem;
-    letter-spacing: 0.015em;
-}
-footer p, footer a, footer li {
-    color: rgba(255,255,255,0.95); /* Even more opaque white */
-    font-size: 1.05rem; /* Slightly larger footer text */
-    line-height: 1.9;
-}
-footer a:hover {
-    color: var(--accent-color);
-    text-decoration: underline;
-}
-footer .social-links a {
-    color: white;
-    font-size: 2rem; /* Larger social icons */
-    transition: transform 0.3s ease, color 0.3s ease;
-    margin-right: 1.5rem;
-}
-footer .social-links a:hover {
-    color: var(--accent-color);
-    transform: translateY(-5px) scale(1.08); /* More pronounced lift and scale */
-}
-footer .border-t {
-    border-color: rgba(255,255,255,0.3); /* Stronger border for separation */
-    margin-top: 3rem;
-    padding-top: 2.5rem;
-}
-#current-year {
-    font-weight: 700;
-}
-footer .fa-heart {
-    color: #FF6B6B;
-    margin: 0 0.4rem;
-    animation: pulse 1.7s infinite ease-in-out; /* Slightly slower pulse */
-}
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.15); } /* More prominent pulse */
-    100% { transform: scale(1); }
-}
-
-/* ========================================= */
-/* 7. Animations & Transitions               */
-/* ========================================= */
-
-/* Fade In Up Animation for Sections */
+/* Subtle animations for elements on scroll (handled via JS, but define styles here) */
 .fade-in-up {
     opacity: 0;
-    transform: translateY(50px); /* Starts even further below its position */
-    transition: opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1); /* Slower, bouncier transition */
-    transition-delay: 0.2s; /* Longer delay */
+    transform: translateY(1.25rem); /* translateY(20px) */
+    transition-property: opacity, transform;
+    transition-duration: 600ms;
+    transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1); /* ease-out */
 }
 .fade-in-up.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Section Heading Underline Animation */
-.section-heading {
+/* Image gallery specific styles */
+.gallery-item {
     position: relative;
-    padding-bottom: 0.8rem; /* More space for the underline */
+    overflow: hidden;
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+    cursor: pointer;
+    padding-top: 75%; /* 4:3 aspect ratio (height / width * 100%) */
 }
-.section-heading::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 7px; /* Even thicker underline */
-    background-color: var(--primary-color);
-    margin: 1.5rem auto 0;
-    border-radius: 3.5px;
-    transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.fade-in-up.visible .section-heading::after {
-    width: 120px; /* Expands to 120px when visible */
-}
-
-
-/* ========================================= */
-/* 9. Preloader and Back-to-Top Button       */
-/* ========================================= */
-
-/* Preloader */
-#preloader {
-    position: fixed;
+.gallery-item img {
+    position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom right, var(--primary-light), white);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1); /* scale-100 */
+    transition-property: transform;
+    transition-duration: 500ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(26, 115, 232, 0); /* bg-primary bg-opacity-0 */
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 9999;
-    transition: opacity 0.9s ease-in-out; /* Slower fade out */
+    transition-property: all;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-#preloader.hidden {
+.gallery-item:hover .gallery-overlay {
+    background-color: rgba(26, 115, 232, 0.7); /* bg-primary bg-opacity-70 */
+}
+.gallery-overlay i {
+    color: white;
+    font-size: 1.875rem; /* text-3xl */
     opacity: 0;
-    pointer-events: none;
+    transform: translateY(1.25rem); /* translate-y-5 */
+    transition-property: all;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.gallery-item:hover .gallery-overlay i {
+    opacity: 1;
+    transform: translateY(0);
 }
 
+/* Doctor profile card specific styles */
+.doctor-card img {
+    width: 8rem; /* w-32 */
+    height: 8rem; /* h-32 */
+    border-radius: 9999px; /* rounded-full */
+    margin-left: auto; /* mx-auto */
+    margin-right: auto; /* mx-auto */
+    margin-bottom: 1rem; /* mb-4 */
+    object-fit: cover;
+    border-width: 4px; /* border-4 */
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+}
+.doctor-card .social-links a {
+    color: var(--primary-color);
+    transition-property: color;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    margin-left: 0.5rem; /* mx-2 */
+    margin-right: 0.5rem; /* mx-2 */
+}
+.doctor-card .social-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Preloader styles for a smooth loading experience */
+#preloader {
+    position: fixed;
+    inset: 0;
+    background-color: white;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-property: opacity;
+    transition-duration: 700ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
 .spinner {
-    width: 80px; /* Larger spinner */
-    height: 80px;
-    border: 7px solid rgba(26, 115, 232, 0.3); /* Stronger primary color border */
+    width: 4rem; /* w-16 */
+    height: 4rem; /* h-16 */
+    border-width: 4px; /* border-4 */
+    border-top-width: 4px; /* border-t-4 */
+    border-radius: 9999px; /* rounded-full */
+    animation: spin 1s linear infinite; /* animate-spin (Tailwind default) */
+    border-color: var(--primary-color) var(--bg-dark) var(--bg-dark) var(--bg-dark);
     border-top-color: var(--primary-color);
-    border-radius: 50%;
-    animation: spin 1.5s linear infinite; /* Even slower spin animation */
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Back to Top Button */
+/* Back to top button */
 #back-to-top {
     position: fixed;
-    bottom: 3.2rem; /* More distance from bottom */
-    right: 3.2rem; /* More distance from right */
+    bottom: 2rem; /* bottom-8 */
+    right: 2rem; /* right-8 */
     background-color: var(--primary-color);
     color: white;
-    padding: 1.3rem; /* Even larger padding */
-    border-radius: 9999px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3); /* Stronger shadow */
+    padding: 0.75rem; /* p-3 */
+    border-radius: 9999px; /* rounded-full */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    transition-property: all;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    z-index: 90;
+    z-index: 40;
     opacity: 0;
     visibility: hidden;
     border: none;
 }
 #back-to-top:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-8px) scale(1.1); /* Even more lift and scale */
-    box-shadow: 0 15px 40px rgba(0,0,0,0.5); /* Heaviest shadow on hover */
+    background-color: #1d4ed8; /* hover:bg-blue-700 */
 }
 #back-to-top.show {
     opacity: 1;
     visibility: visible;
-}
-#back-to-top i {
-    font-size: 1.8rem; /* Larger icon */
 }
 
 /* ========================================= */
