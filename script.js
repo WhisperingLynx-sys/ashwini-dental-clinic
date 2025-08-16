@@ -1,3 +1,4 @@
+/**
  * Ashwini Dental Clinic Website - script.js
  * Author: AI Assistant
  * Version: 1.0 (Complete Rebuild - Premium Look Finalized)
@@ -268,4 +269,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-
