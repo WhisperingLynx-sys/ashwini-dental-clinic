@@ -1,7 +1,7 @@
 /*
  * Ashwini Dental Clinic Website Stylesheet
  * Author: AI Assistant
- * Version: 1.0
+ * Version: 2.1 (Further Premium Enhancements inspired by austinoralsurgery.com)
  * Date: August 16, 2025
  *
  * This stylesheet provides comprehensive styling for the Ashwini Dental Clinic website,
@@ -22,6 +22,15 @@
  * 8. Responsive Adjustments (Media Queries)
  * 9. Preloader and Back-to-Top Button
  * 10. General Layout and Spacing
+ *
+ * Premium Enhancements in this Version (based on austinoralsurgery.com inspiration):
+ * - Even more refined typography with specific attention to line-heights and letter-spacing.
+ * - Deeper, more realistic shadow system for a lifted, premium feel.
+ * - Subtle gradient overlays on cards and elements for depth.
+ * - Enhanced hero section with a more prominent overlay and clearer CTA focus.
+ * - Improved icon styling across service cards and contact info.
+ * - Better spacing and padding to create a more "airy" and luxurious layout.
+ * - Refined border treatments.
  */
 
 /* ========================================= */
@@ -30,6 +39,7 @@
 :root {
     --primary-color: #1A73E8;          /* A vibrant, professional blue (Google Blue inspired) */
     --primary-dark: #155EBF;           /* Darker shade for hover states */
+    --primary-light: #E8F0FE;          /* Very light blue for subtle backgrounds */
     --secondary-color: #34A853;        /* A calming, fresh green (Google Green inspired) */
     --accent-color: #FBBC04;           /* A bright yellow/gold for highlights (Google Yellow inspired) */
     --text-color-dark: #202124;        /* Dark grey for main body text */
@@ -37,9 +47,15 @@
     --bg-light: #F8F9FA;               /* Light grey for alternate section backgrounds */
     --bg-dark: #E8F0FE;                /* Very light blue for subtle section backgrounds */
     --border-color: #DDE2E7;           /* Light grey for borders and separators */
-    --shadow-light: rgba(0, 0, 0, 0.08); /* Light shadow for cards */
-    --shadow-medium: rgba(0, 0, 0, 0.15); /* Medium shadow for hover effects */
-    --shadow-heavy: rgba(0, 0, 0, 0.25); /* Heavy shadow for prominent elements */
+
+    /* Premium Shadows - more layers for depth */
+    --shadow-extra-light: rgba(0, 0, 0, 0.03);
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.12);
+    --shadow-deep: rgba(0, 0, 0, 0.18);
+    --shadow-hover-light: rgba(0, 0, 0, 0.15);
+    --shadow-hover-deep: rgba(0, 0, 0, 0.25);
+    --shadow-inset: rgba(0, 0, 0, 0.05);
 }
 
 /* ========================================= */
@@ -47,35 +63,39 @@
 /* ========================================= */
 html {
     scroll-behavior: smooth; /* Ensures smooth scrolling for anchor links */
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 body {
     font-family: 'Inter', sans-serif; /* Global font applied */
     color: var(--text-color-dark);    /* Default text color */
-    line-height: 1.6;                 /* Standard line height for readability */
+    line-height: 1.7;                 /* Slightly increased line height for readability */
     overflow-x: hidden;               /* Prevents horizontal scrolling issues */
     margin: 0;
     padding: 0;
     background-color: var(--bg-light); /* Default background color for the body */
+    position: relative; /* For global elements like back-to-top */
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 700; /* Bold headings by default */
     color: var(--text-color-dark);
-    margin-bottom: 0.5em; /* Spacing below headings */
+    margin-bottom: 0.6em; /* Increased spacing below headings */
+    letter-spacing: -0.03em; /* Tighter letter spacing for a modern, crisp feel */
 }
 
-h1 { font-size: 3rem; line-height: 1.1; } /* Larger for main titles */
-h2 { font-size: 2.5rem; line-height: 1.2; } /* Section headings */
-h3 { font-size: 2rem; line-height: 1.3; } /* Sub-headings within sections */
-h4 { font-size: 1.75rem; line-height: 1.4; }
-h5 { font-size: 1.5rem; line-height: 1.5; }
-h6 { font-size: 1.25rem; line-height: 1.6; }
+h1 { font-size: 4rem; line-height: 1.15; font-weight: 800; } /* Larger for main titles */
+h2 { font-size: 3.2rem; line-height: 1.25; font-weight: 800; } /* Section headings */
+h3 { font-size: 2.5rem; line-height: 1.35; font-weight: 700; } /* Sub-headings within sections */
+h4 { font-size: 2rem; line-height: 1.45; font-weight: 600; }
+h5 { font-size: 1.75rem; line-height: 1.55; font-weight: 600; }
+h6 { font-size: 1.4rem; line-height: 1.65; font-weight: 500; }
 
 p {
-    font-size: 1.125rem; /* Base paragraph font size */
-    margin-bottom: 1rem; /* Spacing between paragraphs */
+    font-size: 1.15rem; /* Base paragraph font size */
+    margin-bottom: 1.2rem; /* Increased spacing between paragraphs */
     color: var(--text-color-light);
+    line-height: 1.8; /* Generous line height for body text */
 }
 
 a {
@@ -95,11 +115,11 @@ img {
 
 /* Container for consistent content width */
 .container {
-    max-width: 1200px; /* Max width for main content areas */
+    max-width: 1280px; /* Wider max width for more content space */
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1.5rem; /* Default horizontal padding */
-    padding-right: 1.5rem;
+    padding-left: 2rem; /* Increased default horizontal padding */
+    padding-right: 2rem;
 }
 
 /* ========================================= */
@@ -111,167 +131,230 @@ img {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem 2rem; /* Vertical and horizontal padding */
+    padding: 1rem 2.5rem; /* Increased padding for more substantial buttons */
     border-radius: 9999px; /* Fully rounded corners */
     font-weight: 600; /* Semi-bold font */
-    transition: all 0.3s ease-in-out; /* Smooth transitions for all properties */
-    box-shadow: 0 4px 6px -1px var(--shadow-light), 0 2px 4px -2px var(--shadow-light); /* Default shadow */
+    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); /* Smoother, bouncier transition */
+    box-shadow: 0 6px 15px var(--shadow-medium), 0 3px 6px var(--shadow-light); /* Layered shadow */
     background-color: var(--primary-color);
     color: white;
-    border: 2px solid var(--primary-color);
-    transform: translateY(0); /* Initial state for hover animation */
+    border: none;
+    transform: translateY(0);
     cursor: pointer;
-    font-size: 1.125rem; /* Larger text for buttons */
+    font-size: 1.2rem; /* Larger text for buttons */
+    letter-spacing: 0.03em; /* Subtle letter spacing */
+    position: relative;
+    overflow: hidden;
+}
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent 35%, rgba(255,255,255,0.25) 55%, transparent 75%); /* Enhanced shine effect */
+    transform: translateX(-100%);
+    transition: transform 0.6s ease-out;
+}
+.btn-primary:hover::before {
+    transform: translateX(100%); /* Shine effect on hover */
 }
 .btn-primary:hover {
-    background-color: var(--primary-dark); /* Darker shade on hover */
-    box-shadow: 0 10px 15px -3px var(--shadow-medium), 0 4px 6px -4px var(--shadow-medium); /* Enhanced shadow on hover */
-    transform: translateY(-3px); /* Lifts the button slightly */
+    background-color: var(--primary-dark);
+    box-shadow: 0 10px 25px var(--shadow-hover-deep), 0 5px 12px var(--shadow-hover-light); /* More pronounced shadow on hover */
+    transform: translateY(-6px); /* More significant lift */
 }
 .btn-primary:focus {
-    outline: none; /* Remove default focus outline */
-    box-shadow: 0 0 0 4px rgba(26, 115, 232, 0.4); /* Custom focus ring */
+    outline: none;
+    box-shadow: 0 0 0 6px rgba(26, 115, 232, 0.35); /* Wider, more visible focus ring */
 }
 
 .btn-secondary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem 2rem;
+    padding: 1rem 2.5rem;
     border-radius: 9999px;
     font-weight: 600;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 4px 6px -1px var(--shadow-light), 0 2px 4px -2px var(--shadow-light);
+    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 6px 15px var(--shadow-medium), 0 3px 6px var(--shadow-light);
     background-color: transparent;
     color: var(--primary-color);
     border: 2px solid var(--primary-color);
     transform: translateY(0);
     cursor: pointer;
-    font-size: 1.125rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.03em;
 }
 .btn-secondary:hover {
-    background-color: var(--primary-color); /* Fills with primary color on hover */
-    color: white; /* Text becomes white on hover */
-    box-shadow: 0 10px 15px -3px var(--shadow-medium), 0 4px 6px -4px var(--shadow-medium);
-    transform: translateY(-3px);
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 10px 25px var(--shadow-hover-deep), 0 5px 12px var(--shadow-hover-light);
+    transform: translateY(-6px);
 }
 .btn-secondary:focus {
     outline: none;
-    box-shadow: 0 0 0 4px rgba(26, 115, 232, 0.4);
+    box-shadow: 0 0 0 6px rgba(26, 115, 232, 0.35);
 }
 
 /* Cards (General purpose for services, testimonials, etc.) */
 .card {
     background-color: white;
-    border-radius: 1rem; /* Generous rounded corners */
-    box-shadow: 0 8px 16px -4px var(--shadow-light), 0 4px 8px -4px var(--shadow-light); /* Soft, subtle shadow */
-    transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
-    overflow: hidden; /* Ensures content stays within rounded borders */
-    display: flex; /* Flexbox for consistent internal layout */
+    border-radius: 1.5rem; /* Even more rounded corners for a softer, premium feel */
+    box-shadow: 0 15px 40px -8px var(--shadow-deep), 0 8px 20px -8px var(--shadow-medium); /* Deeper, more spread out shadow */
+    transition: all 0.45s cubic-bezier(0.2, 0.8, 0.2, 1); /* Slower, springier transition */
+    overflow: hidden;
+    display: flex;
     flex-direction: column;
+    border: 1px solid rgba(0,0,0,0.07); /* Subtle, crisp border */
+    position: relative;
+    z-index: 1;
+}
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 1.5rem;
+    background: linear-gradient(45deg, var(--primary-light) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+.card:hover::before {
+    opacity: 0.4; /* Stronger subtle gradient background on hover */
 }
 .card:hover {
-    box-shadow: 0 15px 30px -8px var(--shadow-medium), 0 8px 16px -8px var(--shadow-medium); /* More pronounced shadow on hover */
-    transform: translateY(-5px); /* Slight lift effect */
+    box-shadow: 0 25px 60px -15px var(--shadow-hover-deep), 0 12px 30px -15px var(--shadow-hover-light); /* Even more pronounced shadow on hover */
+    transform: translateY(-10px); /* More significant lift effect */
 }
 .card-inner-padding {
-    padding: 2.5rem; /* Default padding inside cards */
+    padding: 3rem; /* Even more generous padding inside cards */
 }
-@media (min-width: 1024px) { /* Larger padding on large screens */
+@media (min-width: 1024px) {
     .card-inner-padding {
-        padding: 3.5rem;
+        padding: 4rem; /* Larger padding on large screens */
     }
 }
 
 /* Form Elements */
 .form-group {
-    margin-bottom: 1.5rem; /* Spacing between form fields */
+    margin-bottom: 2rem; /* Increased spacing between form fields */
 }
 .form-label {
-    display: block; /* Ensures label is on its own line */
+    display: block;
     color: var(--text-color-dark);
-    font-size: 0.875rem; /* Small font for labels */
-    font-weight: 600; /* Semi-bold */
-    margin-bottom: 0.5rem; /* Space between label and input */
+    font-size: 1rem; /* Slightly larger font for labels */
+    font-weight: 600;
+    margin-bottom: 0.8rem; /* Space between label and input */
+    letter-spacing: 0.015em;
 }
 .form-input, .form-textarea {
-    width: 100%; /* Full width within container */
-    padding: 0.75rem 1.25rem; /* Padding inside input fields */
-    border: 1px solid var(--border-color); /* Light grey border */
-    border-radius: 0.5rem; /* Slightly rounded corners */
-    font-size: 1rem; /* Standard font size */
+    width: 100%;
+    padding: 1.1rem 1.6rem; /* Increased padding inside input fields */
+    border: 1px solid var(--border-color);
+    border-radius: 0.9rem; /* More rounded corners */
+    font-size: 1.1rem; /* Standard font size */
     color: var(--text-color-dark);
     background-color: white;
-    transition: all 0.2s ease-in-out; /* Smooth transitions for focus states */
+    box-shadow: inset 0 2px 5px var(--shadow-inset); /* More noticeable inner shadow */
+    transition: all 0.3s ease-in-out;
 }
 .form-input:focus, .form-textarea:focus {
-    outline: none; /* Remove default outline */
-    border-color: var(--primary-color); /* Primary color border on focus */
-    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2); /* Soft blue glow on focus */
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 5px rgba(26, 115, 232, 0.3), inset 0 2px 5px var(--shadow-inset); /* Soft blue glow on focus, keeping inner shadow */
 }
 .form-textarea {
-    min-height: 120px; /* Minimum height for textareas */
-    resize: vertical; /* Allow vertical resizing only */
+    min-height: 160px; /* Increased minimum height for textareas */
+    resize: vertical;
 }
 
 /* Validation feedback for forms */
 .form-error-message {
-    color: #dc3545; /* Bootstrap red for error messages */
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-    display: none; /* Hidden by default, shown with JS */
+    color: #dc3545;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    display: none;
+    font-weight: 500;
 }
 
 /* ========================================= */
 /* 4. Header & Navigation                    */
 /* ========================================= */
 .navbar {
-    position: fixed; /* Fixed at the top */
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 50; /* High z-index to stay on top */
+    z-index: 100;
     background-color: white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Subtle shadow */
-    padding-top: 1rem; /* Default padding */
-    padding-bottom: 1rem;
-    transition: all 0.3s ease-in-out; /* Smooth transition for scroll effect */
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1); /* More pronounced shadow */
+    padding-top: 1.4rem; /* Default padding */
+    padding-bottom: 1.4rem;
+    transition: all 0.3s ease-in-out;
 }
 .navbar-scrolled {
-    padding-top: 0.75rem; /* Reduced padding on scroll */
-    padding-bottom: 0.75rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* More pronounced shadow on scroll */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2); /* Even more pronounced shadow on scroll */
 }
 
 .navbar-brand {
-    font-size: 1.75rem; /* Larger font for brand name */
-    font-weight: 800; /* Extra bold */
+    font-size: 2.1rem; /* Larger font for brand name */
+    font-weight: 800;
     color: var(--primary-color);
     display: flex;
     align-items: center;
-    gap: 0.5rem; /* Space between icon and text */
+    gap: 0.7rem;
+    letter-spacing: -0.04em; /* Tighter letter spacing for logo */
 }
 .navbar-brand i {
     color: var(--primary-color);
-    font-size: 2.25rem; /* Larger icon */
+    font-size: 2.8rem; /* Larger icon */
+    transform: rotate(-10deg); /* Slight rotation for dynamic feel */
+    transition: transform 0.3s ease;
+}
+.navbar-brand:hover i {
+    transform: rotate(0deg);
 }
 
 .nav-link {
-    color: var(--text-color-light); /* Default link color */
-    font-weight: 500; /* Medium font weight */
-    padding: 0.5rem 1rem; /* Padding for click area */
-    border-radius: 0.375rem; /* Slightly rounded */
-    transition: all 0.2s ease-in-out;
-    font-size: 1.05rem; /* Slightly larger nav links */
+    color: var(--text-color-light);
+    font-weight: 500;
+    padding: 0.8rem 1.4rem; /* Increased padding for click area */
+    border-radius: 0.6rem; /* More rounded */
+    transition: all 0.25s ease-in-out;
+    font-size: 1.15rem; /* Slightly larger nav links */
+    position: relative;
+    overflow: hidden;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0.2rem; /* Position underline slightly above bottom */
+    left: 50%; /* Center the underline */
+    transform: translateX(-50%);
+    width: 0;
+    height: 4px; /* Thicker underline */
+    background-color: var(--primary-color);
+    border-radius: 2px;
+    transition: width 0.3s ease-out;
 }
 .nav-link:hover {
-    color: var(--primary-color); /* Primary color on hover */
-    background-color: var(--bg-dark); /* Subtle background on hover */
+    color: var(--primary-dark); /* Darker primary color on hover */
+    background-color: var(--bg-dark);
+}
+.nav-link:hover::after {
+    width: 80%; /* Expand underline on hover, leaving small gaps on sides */
 }
 .nav-link.active {
-    color: var(--primary-color); /* Active link color */
-    font-weight: 700; /* Bold for active link */
-    background-color: var(--bg-dark); /* Highlight for active link */
+    color: var(--primary-color);
+    font-weight: 700;
+    background-color: var(--bg-dark);
+}
+.nav-link.active::after {
+    width: 80%; /* Active link always has full underline */
 }
 
 /* Mobile Navigation Specific Styles */
@@ -279,27 +362,28 @@ img {
     position: fixed;
     top: 0;
     right: 0;
-    width: 280px; /* Fixed width for mobile menu */
+    width: 320px; /* Wider mobile menu */
     height: 100%;
     background-color: white;
-    box-shadow: -8px 0 20px rgba(0,0,0,0.2); /* Shadow on the left side */
-    z-index: 50;
-    transform: translateX(100%); /* Hidden by default */
-    transition: transform 0.3s ease-in-out; /* Smooth sliding animation */
+    box-shadow: -12px 0 35px rgba(0,0,0,0.4); /* Stronger shadow */
+    z-index: 110; /* Higher z-index than navbar */
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     display: flex;
     flex-direction: column;
 }
 .mobile-menu.active {
-    transform: translateX(0); /* Visible state */
+    transform: translateX(0);
 }
 
 .mobile-menu-overlay {
     position: fixed;
-    inset: 0; /* Covers the entire viewport */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
-    z-index: 40; /* Below the menu, above content */
-    display: none; /* Hidden by default */
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Even darker, more prominent overlay */
+    z-index: 105;
+    display: none;
     transition: opacity 0.3s ease-in-out;
+    opacity: 0;
 }
 .mobile-menu-overlay.active {
     display: block;
@@ -307,21 +391,31 @@ img {
 }
 
 .close-menu-btn {
-    font-size: 1.8rem; /* Larger close icon */
+    font-size: 2.2rem; /* Larger close icon */
     color: var(--text-color-light);
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    padding: 0.6rem;
+    border-radius: 50%;
+    background-color: transparent;
 }
 .close-menu-btn:hover {
-    color: #dc3545; /* Red on hover for close button */
+    color: var(--primary-dark);
+    background-color: var(--bg-dark);
 }
 
 .mobile-nav-link {
-    padding: 1rem 1.5rem; /* Larger padding for mobile links */
-    font-size: 1.1rem;
-    border-bottom: 1px solid var(--border-color); /* Separator between links */
+    padding: 1.2rem 2rem; /* Larger padding for mobile links */
+    font-size: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-color-dark);
+    font-weight: 500;
 }
 .mobile-nav-link:last-child {
-    border-bottom: none; /* No border for the last link */
+    border-bottom: none;
+}
+.mobile-nav-link:hover {
+    background-color: var(--bg-dark);
+    color: var(--primary-color);
 }
 
 
@@ -331,17 +425,19 @@ img {
 
 /* Hero Section */
 #hero {
-    /* Background properties are set in inline style in HTML for dynamic image placeholder */
-    min-height: 90vh; /* Make hero section occupy most of the viewport height */
+    background: linear-gradient(rgba(26, 115, 232, 0.75), rgba(26, 115, 232, 0.9)), url('https://placehold.co/1920x1080/1a73e8/ffffff?text=Professional+Dental+Clinic') no-repeat center center/cover;
+    background-attachment: fixed; /* Parallax effect */
+    min-height: 95vh;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3); /* Subtle text shadow for readability */
-    position: relative; /* Needed for overlay */
-    text-align: center; /* Center align text */
-    padding-top: 5rem; /* Ensure content is below navbar */
-    padding-bottom: 5rem;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.5); /* Stronger text shadow for readability */
+    position: relative;
+    text-align: center;
+    padding-top: 8rem; /* Ensure content is well below navbar */
+    padding-bottom: 8rem;
+    overflow: hidden;
 }
 #hero::before {
     content: '';
@@ -350,232 +446,291 @@ img {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(rgba(26, 115, 232, 0.6), rgba(26, 115, 232, 0.8)); /* Stronger overlay gradient */
-    z-index: 1; /* Below content, above background image */
+    background: linear-gradient(rgba(26, 115, 232, 0.7), rgba(26, 115, 232, 0.9)); /* Stronger overlay gradient */
+    z-index: 1;
 }
 #hero .container {
-    z-index: 2; /* Content needs to be above the overlay */
+    z-index: 2;
 }
 #hero h1 {
-    font-size: 4.5rem; /* Even larger heading for impact */
+    font-size: 5.5rem; /* Even larger heading for impact */
     font-weight: 800;
     line-height: 1.1;
     color: white;
-    text-shadow: 0 4px 8px rgba(0,0,0,0.5); /* Stronger text shadow */
+    text-shadow: 0 6px 12px rgba(0,0,0,0.7); /* Even stronger text shadow */
+    margin-bottom: 1.8rem;
 }
 #hero p {
-    font-size: 1.5rem; /* Larger paragraph */
+    font-size: 1.8rem; /* Larger paragraph */
     font-weight: 300;
-    max-width: 48rem; /* Constrain width for readability */
-    margin: 1.5rem auto 2.5rem; /* Spacing */
-    color: rgba(255,255,255,0.9);
+    max-width: 60rem; /* Wider text block for better flow */
+    margin: 1.8rem auto 3.5rem; /* Increased spacing */
+    color: rgba(255,255,255,0.98);
+    line-height: 1.6;
 }
 
 /* About Us Section */
 #about {
     background-color: white;
-    padding: 8rem 0; /* More padding for key sections */
+    padding: 9rem 0; /* More padding for key sections */
+    position: relative;
+    overflow: hidden;
+}
+#about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="10" fill="%23e8f0fe" opacity="0.6"/></svg>'); /* Slightly more visible pattern */
+    background-size: 40px 40px; /* Larger, softer pattern */
+    opacity: 0.3;
+    z-index: 0;
+}
+#about .container {
+    position: relative;
+    z-index: 1;
 }
 #about img {
-    border-radius: 1rem;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Soft shadow for the image */
+    border-radius: 1.8rem; /* More rounded image */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2); /* Deeper shadow for the image */
     max-width: 100%;
     height: auto;
+    border: 5px solid var(--primary-light); /* More prominent soft border */
 }
 #about p {
-    font-size: 1.15rem;
+    font-size: 1.25rem; /* Larger body text */
     color: var(--text-color-light);
+    line-height: 1.8;
 }
 #about .font-semibold.text-primary {
-    font-weight: 700; /* Ensure this text stands out */
+    font-weight: 700;
+    color: var(--primary-dark);
 }
 
 /* Services Section */
 #services {
     background-color: var(--bg-light);
-    padding: 8rem 0;
+    padding: 9rem 0;
 }
 #services .card {
-    height: 100%; /* Ensure all cards have equal height */
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 #services .card .text-6xl {
     color: var(--primary-color);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 3px 6px rgba(0,0,0,0.15); /* More noticeable shadow for icons */
 }
 #services .card h3 {
     color: var(--text-color-dark);
-    font-size: 1.8rem;
-    margin-bottom: 0.75rem;
+    font-size: 2rem; /* Larger service titles */
+    margin-bottom: 1rem;
+    letter-spacing: -0.015em;
 }
 #services .card p {
-    font-size: 1rem;
+    font-size: 1.15rem; /* Larger service descriptions */
     color: var(--text-color-light);
-    flex-grow: 1; /* Allows paragraph to take up available space */
+    flex-grow: 1;
+    line-height: 1.7;
 }
 #services .card a {
     font-weight: 600;
-    margin-top: 1rem; /* Space before the "Learn More" link */
+    margin-top: 1.5rem;
     display: inline-flex;
     align-items: center;
+    color: var(--primary-dark);
 }
 #services .card a i {
-    margin-left: 0.5rem;
-    transition: transform 0.2s ease;
+    margin-left: 0.7rem;
+    transition: transform 0.3s ease;
 }
 #services .card a:hover i {
-    transform: translateX(3px); /* Arrow moves slightly on hover */
+    transform: translateX(8px); /* Arrow moves more on hover */
 }
 
 
 /* Meet the Doctor Section */
 #doctors {
     background-color: white;
-    padding: 8rem 0;
+    padding: 9rem 0;
+    position: relative;
+    overflow: hidden;
+}
+#doctors::after { /* Decorative geometric pattern */
+    content: '';
+    position: absolute;
+    bottom: -150px; /* Position further below */
+    right: -150px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--secondary-color) 0%, transparent 70%); /* Secondary color for this pattern */
+    border-radius: 50%;
+    opacity: 0.1; /* More subtle opacity */
+    z-index: 0;
+    pointer-events: none;
 }
 .doctor-card {
     text-align: center;
-    padding: 3rem;
-    max-width: 768px; /* Max width for the doctor's profile card */
-    margin: 0 auto; /* Center the card */
+    padding: 4rem; /* Increased padding */
+    max-width: 900px; /* Wider card */
+    margin: 0 auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25); /* More prominent shadow */
+    border-radius: 2.5rem; /* More rounded */
+    border: 1px solid rgba(0,0,0,0.08); /* Subtle border */
 }
 .doctor-card img {
-    width: 160px; /* Larger image for doctor profile */
-    height: 160px;
-    border-width: 6px; /* Thicker border */
-    border-color: var(--primary-color);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15); /* More prominent shadow */
+    width: 200px; /* Larger image for doctor profile */
+    height: 200px;
+    border-width: 10px; /* Thicker border */
+    border-color: var(--secondary-color); /* Green border for contrast */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25); /* More prominent shadow */
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth with spring */
+}
+.doctor-card img:hover {
+    transform: scale(1.07) rotate(3deg); /* More pronounced rotate and scale on hover */
 }
 .doctor-card h3 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+    font-size: 3rem; /* Larger doctor name */
+    margin-bottom: 1rem;
     color: var(--text-color-dark);
 }
 .doctor-card p.text-primary {
-    font-size: 1.25rem;
+    font-size: 1.45rem; /* Larger qualification text */
     font-weight: 600;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--primary-dark);
 }
 .doctor-card p.text-gray-700 {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 1.25rem;
+    font-size: 1.2rem; /* Larger bio text */
+    line-height: 1.9;
+    margin-bottom: 1.8rem;
 }
 .doctor-card .social-links a {
-    font-size: 2.2rem; /* Larger social icons */
-    margin: 0 0.75rem; /* Spacing between icons */
+    font-size: 2.6rem; /* Larger social icons */
+    margin: 0 1rem; /* Spacing between icons */
     color: var(--primary-color);
-    transition: transform 0.2s ease, color 0.2s ease;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
 }
 .doctor-card .social-links a:hover {
-    color: var(--accent-color); /* Accent color on hover for social links */
-    transform: translateY(-3px); /* Lift effect */
+    color: var(--accent-color);
+    transform: translateY(-10px) scale(1.15); /* More pronounced lift and scale effect */
 }
 
 
 /* Testimonials Section */
 #testimonials {
     background-color: var(--bg-dark);
-    padding: 8rem 0;
+    padding: 9rem 0;
 }
 .testimonial-carousel {
     position: relative;
-    padding-bottom: 3rem; /* Space for controls/dots if added later */
+    padding-bottom: 4rem; /* More space for controls/dots */
 }
 .testimonial-track {
     display: flex;
-    transition: transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1); /* Slower, smoother transition */
+    transition: transform 0.9s cubic-bezier(0.25, 1, 0.3, 1.2); /* Slower, smoother, more pronounced ease */
 }
 .testimonial-slide {
-    flex-shrink: 0; /* Prevents slides from shrinking */
-    width: 100%; /* Default to full width for mobile */
-    padding: 1rem; /* Padding for the slide itself */
+    flex-shrink: 0;
+    width: 100%;
+    padding: 1.2rem; /* Increased padding for the slide itself */
 }
 @media (min-width: 768px) {
     .testimonial-slide {
-        width: 50%; /* Two slides per row on medium screens */
+        width: 50%;
     }
 }
 @media (min-width: 1024px) {
     .testimonial-slide {
-        width: 33.333%; /* Three slides per row on large screens */
+        width: 33.333%;
     }
 }
 .testimonial-slide .card {
-    min-height: 250px; /* Minimum height for testimonial cards */
+    min-height: 300px; /* Increased minimum height for testimonial cards */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 2.5rem; /* Consistent card padding */
+    padding: 3.2rem; /* More consistent card padding */
+    box-shadow: 0 10px 30px var(--shadow-medium), 0 5px 15px var(--shadow-light);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+.testimonial-slide .card:hover {
+    box-shadow: 0 20px 50px var(--shadow-deep), 0 10px 25px var(--shadow-medium);
+    transform: translateY(-7px);
 }
 .testimonial-slide i.fas.fa-quote-left {
-    color: var(--accent-color); /* Highlight quote icon with accent color */
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    color: var(--accent-color);
+    font-size: 4rem; /* Larger quote icon */
+    margin-bottom: 1.5rem;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.2); /* More prominent shadow for icon */
 }
 .testimonial-slide p {
     font-style: italic;
-    font-size: 1.1rem;
-    line-height: 1.7;
+    font-size: 1.2rem; /* Larger testimonial text */
+    line-height: 1.9;
     color: var(--text-color-light);
+    margin-bottom: 1.8rem;
 }
 .testimonial-slide .font-semibold {
-    font-size: 1.15rem;
-    color: var(--primary-color);
-    margin-top: 1.5rem;
+    font-size: 1.25rem; /* Larger author name */
+    color: var(--primary-dark);
+    margin-top: 1.8rem;
+    font-weight: 700;
 }
 
 .carousel-control {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+    background-color: rgba(255, 255, 255, 0.98); /* Almost opaque background */
     color: var(--primary-color);
-    padding: 0.8rem;
-    border-radius: 9999px; /* Fully round */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Soft shadow */
+    padding: 1.2rem; /* Even larger padding */
+    border-radius: 9999px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25); /* Stronger shadow */
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: none;
-    font-size: 1.5rem; /* Larger arrows */
+    font-size: 1.8rem; /* Even larger arrows */
 }
 .carousel-control:hover {
     background-color: var(--primary-color);
     color: white;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-    transform: translateY(-50%) scale(1.05); /* Slight scale on hover */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    transform: translateY(-50%) scale(1.2); /* More pronounced scale on hover */
 }
 .carousel-control.left {
-    left: 1rem; /* Distance from edge */
+    left: 2rem; /* More distance from edge */
 }
 .carousel-control.right {
-    right: 1rem;
+    right: 2rem;
 }
-/* Adjust controls for smaller screens to prevent overlap */
 @media (max-width: 768px) {
     .carousel-control {
-        padding: 0.6rem;
-        font-size: 1.2rem;
+        padding: 1rem;
+        font-size: 1.5rem;
     }
-    .carousel-control.left { left: 0.5rem; }
-    .carousel-control.right { right: 0.5rem; }
+    .carousel-control.left { left: 1rem; }
+    .carousel-control.right { right: 1rem; }
 }
 
 
 /* Gallery Section */
 #gallery {
     background-color: white;
-    padding: 8rem 0;
+    padding: 9rem 0;
 }
 .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 0.75rem; /* Rounded corners for gallery items */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Soft shadow */
+    border-radius: 1.2rem; /* More rounded corners for gallery items */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Stronger shadow */
     cursor: pointer;
     padding-top: 75%; /* Maintain a 4:3 aspect ratio */
+    border: 1px solid var(--border-color); /* Subtle border for crispness */
 }
 .gallery-item img {
     position: absolute;
@@ -583,121 +738,140 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cover the area without distortion */
-    transition: transform 0.5s ease; /* Smooth zoom on hover */
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Slower, smoother zoom with spring */
 }
 .gallery-item:hover img {
-    transform: scale(1.1); /* Zoom effect on hover */
+    transform: scale(1.2); /* Even more pronounced zoom effect on hover */
 }
 .gallery-overlay {
     position: absolute;
     inset: 0;
-    background-color: rgba(26, 115, 232, 0); /* Starts fully transparent */
+    background-color: rgba(26, 115, 232, 0);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.4s ease; /* Smooth overlay fade-in */
+    transition: background-color 0.4s ease;
 }
 .gallery-item:hover .gallery-overlay {
-    background-color: rgba(26, 115, 232, 0.75); /* Primary color overlay with opacity */
+    background-color: rgba(26, 115, 232, 0.9); /* More opaque primary color overlay */
 }
 .gallery-overlay i {
     color: white;
-    font-size: 3rem;
-    opacity: 0; /* Hidden initially */
-    transform: translateY(20px); /* Starts below its position */
+    font-size: 4rem; /* Larger icon */
+    opacity: 0;
+    transform: translateY(25px); /* Starts further below its position */
     transition: opacity 0.4s ease, transform 0.4s ease;
-    transition-delay: 0.1s; /* Slight delay for icon animation */
+    transition-delay: 0.2s; /* Longer delay for icon animation */
 }
 .gallery-item:hover .gallery-overlay i {
-    opacity: 1; /* Fade in */
-    transform: translateY(0); /* Slide up to position */
+    opacity: 1;
+    transform: translateY(0);
 }
 
 
 /* FAQ Section (Accordion) */
 #faq {
     background-color: var(--bg-light);
-    padding: 8rem 0;
+    padding: 9rem 0;
 }
 .accordion-item {
-    margin-bottom: 1rem; /* Space between accordion items */
+    margin-bottom: 1.5rem; /* Increased space between accordion items */
     border: 1px solid var(--border-color);
-    border-radius: 0.75rem; /* Rounded corners for accordion items */
-    overflow: hidden; /* Ensures content stays within rounded borders */
+    border-radius: 1rem; /* More rounded corners for accordion items */
+    overflow: hidden;
+    box-shadow: 0 4px 12px var(--shadow-light); /* Slightly stronger shadow for each item */
 }
 .accordion-header {
     background-color: white;
-    padding: 1.25rem 1.75rem; /* Generous padding */
+    padding: 1.6rem 2.2rem; /* More generous padding */
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.15rem;
+    font-size: 1.25rem; /* Larger font for headers */
     font-weight: 600;
     color: var(--text-color-dark);
-    transition: background-color 0.2s ease;
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 .accordion-header:hover {
-    background-color: var(--bg-dark); /* Subtle background on hover */
+    background-color: var(--bg-dark);
+    color: var(--primary-dark);
+}
+.accordion-header.active {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    border-bottom: 1px solid var(--primary-color);
+    border-radius: 1rem 1rem 0 0;
 }
 .accordion-header i {
-    font-size: 1.2rem;
-    transition: transform 0.3s ease; /* Smooth arrow rotation */
+    font-size: 1.4rem; /* Larger arrow */
+    transition: transform 0.3s ease;
+    color: var(--text-color-light);
 }
 .accordion-header.active i {
-    transform: rotate(180deg); /* Rotate arrow when active */
+    transform: rotate(180deg);
+    color: var(--primary-dark);
 }
 .accordion-content {
-    background-color: var(--bg-light);
+    background-color: var(--primary-light);
     color: var(--text-color-light);
-    max-height: 0; /* Hidden by default */
+    max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Smooth slide down */
+    transition: max-height 0.7s ease-in-out, padding 0.7s ease-in-out, opacity 0.7s ease-in-out; /* Slower, smoother slide down */
     opacity: 0;
-    padding: 0 1.75rem; /* Horizontal padding, no vertical padding when collapsed */
-    font-size: 1.05rem;
+    padding: 0 2.2rem;
+    font-size: 1.15rem; /* Larger content text */
+    line-height: 1.8;
 }
 .accordion-content.active {
-    max-height: 200px; /* Adjust based on expected max content height */
-    padding-top: 1rem; /* Add vertical padding when active */
-    padding-bottom: 1.75rem;
+    max-height: 350px; /* Increased max height for content */
+    padding-top: 1.5rem;
+    padding-bottom: 2.2rem;
     opacity: 1;
 }
 
 /* Contact Us Section */
 #contact {
     background-color: white;
-    padding: 8rem 0;
+    padding: 9rem 0;
 }
 #contact .card {
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* Slightly more prominent shadow for contact cards */
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25); /* More prominent shadow for contact cards */
+    border-radius: 1.8rem; /* More rounded */
 }
 #contact .card.bg-bg-light {
-    background-color: var(--bg-light); /* Apply light background specifically */
+    background-color: var(--bg-dark);
+    border: 1px solid rgba(26, 115, 232, 0.15); /* Slightly stronger blue border */
 }
 #contact h3 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+    font-size: 2.8rem; /* Larger contact heading */
+    margin-bottom: 2rem;
+    color: var(--text-color-dark);
+    letter-spacing: -0.025em;
 }
 #contact p.flex {
-    align-items: flex-start; /* Align icon to the top of multi-line text */
+    align-items: flex-start;
+    font-size: 1.2rem; /* Larger contact info text */
+    line-height: 1.7;
 }
 #contact p i {
     color: var(--primary-color);
-    font-size: 1.75rem;
-    margin-right: 1rem;
-    flex-shrink: 0; /* Prevent icon from shrinking */
+    font-size: 2.2rem; /* Larger icon */
+    margin-right: 1.4rem;
+    flex-shrink: 0;
 }
 #contact iframe {
-    border: 1px solid var(--border-color);
-    border-radius: 0.75rem;
+    border: 3px solid var(--primary-light); /* More prominent border for map */
+    border-radius: 1.5rem;
     width: 100%;
-    height: 350px; /* Fixed height for the map */
+    height: 420px; /* Increased height for the map */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 @media (max-width: 768px) {
     #contact iframe {
-        height: 250px; /* Shorter map on mobile */
+        height: 300px;
     }
 }
 
@@ -705,42 +879,69 @@ img {
 footer {
     background-color: var(--primary-color);
     color: white;
-    padding: 4rem 0;
+    padding: 5rem 0; /* Increased padding */
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+}
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M60 0 L120 60 L60 120 L0 60 Z" fill="%23ffffff" opacity="0.08"/></svg>'); /* Larger, slightly more visible pattern */
+    background-size: 180px 180px;
+    opacity: 0.1;
+    z-index: 0;
+}
+footer .container {
+    position: relative;
+    z-index: 1;
 }
 footer h3 {
     color: white;
-    font-size: 1.75rem;
-    margin-bottom: 1.5rem;
+    font-size: 2.2rem; /* Larger footer headings */
+    margin-bottom: 2rem;
+    letter-spacing: 0.015em;
 }
 footer p, footer a, footer li {
-    color: rgba(255,255,255,0.85); /* Slightly transparent white */
-    font-size: 0.95rem;
-    line-height: 1.7;
+    color: rgba(255,255,255,0.95); /* Even more opaque white */
+    font-size: 1.05rem; /* Slightly larger footer text */
+    line-height: 1.9;
 }
 footer a:hover {
-    color: var(--accent-color); /* Accent color on hover for footer links */
+    color: var(--accent-color);
     text-decoration: underline;
 }
 footer .social-links a {
     color: white;
-    font-size: 1.5rem;
-    transition: color 0.2s ease;
-    margin-right: 1rem;
+    font-size: 2rem; /* Larger social icons */
+    transition: transform 0.3s ease, color 0.3s ease;
+    margin-right: 1.5rem;
 }
 footer .social-links a:hover {
     color: var(--accent-color);
+    transform: translateY(-5px) scale(1.08); /* More pronounced lift and scale */
 }
 footer .border-t {
-    border-color: rgba(255,255,255,0.2); /* Lighter border for separation */
-    margin-top: 2rem;
-    padding-top: 1.5rem;
+    border-color: rgba(255,255,255,0.3); /* Stronger border for separation */
+    margin-top: 3rem;
+    padding-top: 2.5rem;
 }
 #current-year {
-    font-weight: 500;
+    font-weight: 700;
 }
 footer .fa-heart {
-    color: #FF6B6B; /* Red heart icon */
-    margin: 0 0.25rem;
+    color: #FF6B6B;
+    margin: 0 0.4rem;
+    animation: pulse 1.7s infinite ease-in-out; /* Slightly slower pulse */
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); } /* More prominent pulse */
+    100% { transform: scale(1); }
 }
 
 /* ========================================= */
@@ -750,9 +951,9 @@ footer .fa-heart {
 /* Fade In Up Animation for Sections */
 .fade-in-up {
     opacity: 0;
-    transform: translateY(30px); /* Starts slightly below its position */
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Slower, smoother transition */
-    transition-delay: 0.1s; /* Small delay */
+    transform: translateY(50px); /* Starts even further below its position */
+    transition: opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1); /* Slower, bouncier transition */
+    transition-delay: 0.2s; /* Longer delay */
 }
 .fade-in-up.visible {
     opacity: 1;
@@ -762,20 +963,20 @@ footer .fa-heart {
 /* Section Heading Underline Animation */
 .section-heading {
     position: relative;
-    padding-bottom: 0.5rem; /* Space for the underline */
+    padding-bottom: 0.8rem; /* More space for the underline */
 }
 .section-heading::after {
     content: '';
     display: block;
-    width: 0; /* Starts at zero width */
-    height: 5px; /* Thicker underline */
+    width: 0;
+    height: 7px; /* Even thicker underline */
     background-color: var(--primary-color);
-    margin: 1rem auto 0;
-    border-radius: 2.5px;
-    transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Custom cubic-bezier for a springy feel */
+    margin: 1.5rem auto 0;
+    border-radius: 3.5px;
+    transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .fade-in-up.visible .section-heading::after {
-    width: 80px; /* Expands to 80px when visible */
+    width: 120px; /* Expands to 120px when visible */
 }
 
 
@@ -787,25 +988,25 @@ footer .fa-heart {
 #preloader {
     position: fixed;
     inset: 0;
-    background-color: white; /* White background for preloader */
+    background: linear-gradient(to bottom right, var(--primary-light), white);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 9999; /* Highest z-index */
-    transition: opacity 0.7s ease-in-out; /* Smooth fade out */
+    z-index: 9999;
+    transition: opacity 0.9s ease-in-out; /* Slower fade out */
 }
 #preloader.hidden {
     opacity: 0;
-    pointer-events: none; /* Allows clicks through once hidden */
+    pointer-events: none;
 }
 
 .spinner {
-    width: 60px;
-    height: 60px;
-    border: 5px solid rgba(26, 115, 232, 0.2); /* Light primary color border */
-    border-top-color: var(--primary-color); /* Solid primary color for the spinning part */
+    width: 80px; /* Larger spinner */
+    height: 80px;
+    border: 7px solid rgba(26, 115, 232, 0.3); /* Stronger primary color border */
+    border-top-color: var(--primary-color);
     border-radius: 50%;
-    animation: spin 1s linear infinite; /* Spin animation */
+    animation: spin 1.5s linear infinite; /* Even slower spin animation */
 }
 
 @keyframes spin {
@@ -816,31 +1017,31 @@ footer .fa-heart {
 /* Back to Top Button */
 #back-to-top {
     position: fixed;
-    bottom: 2.5rem; /* Distance from bottom */
-    right: 2.5rem; /* Distance from right */
+    bottom: 3.2rem; /* More distance from bottom */
+    right: 3.2rem; /* More distance from right */
     background-color: var(--primary-color);
     color: white;
-    padding: 1rem;
-    border-radius: 9999px; /* Fully rounded */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Soft shadow */
+    padding: 1.3rem; /* Even larger padding */
+    border-radius: 9999px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3); /* Stronger shadow */
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    z-index: 40; /* Above regular content, below modals */
-    opacity: 0; /* Hidden by default */
-    visibility: hidden; /* Ensures it doesn't take up space when hidden */
-    border: none; /* Remove button border */
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: 90;
+    opacity: 0;
+    visibility: hidden;
+    border: none;
 }
 #back-to-top:hover {
     background-color: var(--primary-dark);
-    transform: translateY(-3px); /* Slight lift */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* Enhanced shadow on hover */
+    transform: translateY(-8px) scale(1.1); /* Even more lift and scale */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5); /* Heaviest shadow on hover */
 }
 #back-to-top.show {
     opacity: 1;
     visibility: visible;
 }
 #back-to-top i {
-    font-size: 1.5rem; /* Icon size */
+    font-size: 1.8rem; /* Larger icon */
 }
 
 /* ========================================= */
@@ -850,91 +1051,93 @@ footer .fa-heart {
 /* Small devices (phones, 640px and below) */
 @media (max-width: 640px) {
     .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
     }
-    h1 { font-size: 3rem; }
-    h2 { font-size: 2rem; }
-    h3 { font-size: 1.75rem; }
-    p { font-size: 1rem; }
+    h1 { font-size: 3.5rem; }
+    h2 { font-size: 2.5rem; }
+    h3 { font-size: 2.1rem; }
+    p { font-size: 1.1rem; }
 
     .btn-primary, .btn-secondary {
-        padding: 0.6rem 1.5rem;
-        font-size: 1rem;
+        padding: 0.8rem 2rem;
+        font-size: 1.1rem;
     }
 
-    #hero h1 { font-size: 3.5rem; }
-    #hero p { font-size: 1.15rem; }
+    #hero h1 { font-size: 4.5rem; }
+    #hero p { font-size: 1.5rem; }
     #hero .space-x-4 {
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.2rem;
     }
     #hero .btn-primary, #hero .btn-secondary {
-        width: 100%; /* Full width buttons on mobile hero */
+        width: 100%;
     }
 
     section {
-        padding: 4rem 0; /* Reduced vertical padding */
+        padding: 5rem 0;
     }
 
     .card-inner-padding {
-        padding: 2rem; /* Reduced padding for mobile cards */
+        padding: 2.5rem;
     }
 
     .section-heading {
-        font-size: 2.25rem;
-        margin-bottom: 2rem;
+        font-size: 2.8rem;
+        margin-bottom: 2.5rem;
     }
     .section-heading::after {
-        width: 60px; /* Smaller underline */
+        width: 80px;
+        height: 6px;
     }
 
     .doctor-card {
-        padding: 2rem;
+        padding: 3rem;
     }
     .doctor-card img {
-        width: 120px;
-        height: 120px;
+        width: 160px;
+        height: 160px;
+        border-width: 6px;
     }
     .doctor-card h3 {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
     .doctor-card p.text-primary {
-        font-size: 1.1rem;
+        font-size: 1.25rem;
     }
     .doctor-card p.text-gray-700 {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
     .doctor-card .social-links a {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
     }
 
     .accordion-header {
-        font-size: 1rem;
-        padding: 1rem 1.25rem;
+        font-size: 1.15rem;
+        padding: 1.4rem 1.8rem;
     }
     .accordion-content {
-        padding: 0 1.25rem;
+        padding: 0 1.8rem;
     }
     .accordion-content.active {
-        padding-top: 0.75rem;
-        padding-bottom: 1rem;
+        padding-top: 1.2rem;
+        padding-bottom: 1.8rem;
     }
 
     #contact .card {
-        padding: 2rem;
+        padding: 2.5rem;
     }
     #contact h3 {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
     }
 
     footer {
-        padding: 3rem 0;
+        padding: 4rem 0;
         text-align: center;
     }
     footer h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
+        font-size: 1.9rem;
+        margin-bottom: 1.5rem;
     }
     footer ul {
         padding-left: 0;
@@ -947,7 +1150,8 @@ footer .fa-heart {
         justify-content: center;
     }
     footer p.flex i {
-        margin-right: 0.5rem; /* Smaller margin for icons in footer */
+        margin-right: 1rem;
+        font-size: 1.7rem;
     }
     footer .grid {
         grid-template-columns: 1fr;
@@ -956,42 +1160,48 @@ footer .fa-heart {
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-    h1 { font-size: 3.5rem; }
-    h2 { font-size: 2.75rem; }
-    h3 { font-size: 2.25rem; }
-    p { font-size: 1.125rem; }
+    h1 { font-size: 4.8rem; }
+    h2 { font-size: 3.8rem; }
+    h3 { font-size: 3rem; }
+    p { font-size: 1.3rem; }
 
-    #hero h1 { font-size: 5.5rem; }
-    #hero p { font-size: 1.8rem; }
+    #hero h1 { font-size: 6.5rem; }
+    #hero p { font-size: 2.2rem; }
 
     .section-heading {
-        font-size: 3.5rem;
+        font-size: 4.5rem;
     }
 
     #contact .flex-col.lg\:flex-row {
-        flex-direction: row; /* Horizontal layout for contact section */
+        flex-direction: row;
     }
 }
 
 /* Large devices (desktops, 1024px and up) */
 @media (min-width: 1024px) {
-    h1 { font-size: 4rem; }
-    h2 { font-size: 3rem; }
-    h3 { font-size: 2.5rem; }
-    p { font-size: 1.15rem; }
+    h1 { font-size: 5.5rem; }
+    h2 { font-size: 4.2rem; }
+    h3 { font-size: 3.5rem; }
+    p { font-size: 1.35rem; }
 
-    #hero h1 { font-size: 6rem; }
-    #hero p { font-size: 2rem; }
+    #hero h1 { font-size: 7.5rem; }
+    #hero p { font-size: 2.4rem; }
 
     .section-heading {
-        font-size: 4rem;
+        font-size: 5rem;
     }
 }
 
 /* Extra large devices (large desktops, 1280px and up) */
 @media (min-width: 1280px) {
     .container {
-        max-width: 1280px;
+        max-width: 1500px; /* Even wider container for larger screens */
     }
-    #hero h1 { font-size: 7rem; }
+    h1 { font-size: 6rem; }
+    h2 { font-size: 4.8rem; }
+    #hero h1 { font-size: 8rem; }
+    #hero p { font-size: 2.6rem; }
+    .section-heading {
+        font-size: 5.5rem;
+    }
 }
